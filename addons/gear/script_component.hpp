@@ -3,7 +3,7 @@
 #include "\z\cine_addizeus\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
-// #define DISABLE_COMPILE_CACHE
+ #define DISABLE_COMPILE_CACHE                  //TODO uncomment this when done
 // #define CBA_DEBUG_SYNCHRONOUS
 // #define ENABLE_PERFORMANCE_COUNTERS
 

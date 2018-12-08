@@ -26,11 +26,11 @@
   };
 
   //get previously used loadouts
-  _gearLeader = profileNamespace getVariable [QGVAR(gearLeader), []];
-  _gearAT = profileNamespace getVariable [QGVAR(gearAT), []];
-  _gearAA = profileNamespace getVariable [QGVAR(gearAA), []];
-  _gearAR = profileNamespace getVariable [QGVAR(gearAR), []];
-  _gearDefault = profileNamespace getVariable [QGVAR(gearDefault), []];
+  _gearLeader = profileNamespace getVariable [QGVAR(gearLeader), "[]"];
+  _gearAT = profileNamespace getVariable [QGVAR(gearAT), "[]"];
+  _gearAA = profileNamespace getVariable [QGVAR(gearAA), "[]"];
+  _gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
+  _gearDefault = profileNamespace getVariable [QGVAR(gearDefault), "[]"];
 
   //Create dialog
   private _dialogResult = [
@@ -56,10 +56,6 @@
   profileNamespace setVariable [QGVAR(gearAA), _gearAA];
   profileNamespace setVariable [QGVAR(gearAR), _gearAR];
   profileNamespace setVariable [QGVAR(gearDefault), _gearDefault];
-
-  {
-    systemChat str _x;
-  } forEach _dialogResult;
 
   {
     /* TODO */
