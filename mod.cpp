@@ -1,0 +1,12 @@
+name = "Additional Zeus stuff";
+//picture = "logo_cine_addizeus_ca.paa";
+actionName = "GitHub";
+action = "https://github.com/cineafx/CINE_addizeus";
+description = "Adds additonal zeus interactions and modules.";
+//logo = "logo_cine_addizeus_ca.paa";
+//logoOver = "logo_cine_addizeus_ca.paa";
+tooltip = "Additional Zeus stuff";
+tooltipOwned = "Additional Zeus stuff Owned";
+overview = "Adds additonal zeus interactions and modules.";
+author = "cineafx";
+//overviewPicture = "logo_ace3_ca.paa";
