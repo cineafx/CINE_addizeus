@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: cineafx
- * [Description] TODO
+ * Adds a module to apply the predefine loadouts to the zeus module menu.
  *
  * Arguments:
  * none
@@ -15,7 +15,7 @@
  * Public: [No]
  */
 
-["CINE Gear", "Predefined gear",
+["CINE Gear", "Apply predefined gear",
 {
 
   _units = [];
@@ -26,40 +26,18 @@
   };
 
   //get previously used loadouts
+  _gearDefault = profileNamespace getVariable [QGVAR(gearDefault), "[]"];
   _gearLeader = profileNamespace getVariable [QGVAR(gearLeader), "[]"];
   _gearAT = profileNamespace getVariable [QGVAR(gearAT), "[]"];
   _gearAA = profileNamespace getVariable [QGVAR(gearAA), "[]"];
   _gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
-  _gearDefault = profileNamespace getVariable [QGVAR(gearDefault), "[]"];
-
-  //Create dialog
-  private _dialogResult = [
-    "Set Gear",
-    [
-      ["Leader", "", _gearLeader],
-      ["AT", "", _gearAT],
-      ["AA", "", _gearAA],
-      ["AR", "", _gearAR],
-      ["Default", "", _gearDefault]
-    ]
-  ] call Ares_fnc_showChooseDialog;
-
-  //did the dialog return empty
-  if (_dialogResult isEqualTo []) exitWith{};
-  //_dialogResult is an array of string. This converts the strings into arrays.
-  _dialogResult apply {parseSimpleArray _x};
-  _dialogResult params ["_gearLeader", "_gearAT", "_gearAA", "_gearAR", "_gearDefault"];
-
-  //save loadouts to be able to use it later
-  profileNamespace setVariable [QGVAR(gearLeader), _gearLeader];
-  profileNamespace setVariable [QGVAR(gearAT), _gearAT];
-  profileNamespace setVariable [QGVAR(gearAA), _gearAA];
-  profileNamespace setVariable [QGVAR(gearAR), _gearAR];
-  profileNamespace setVariable [QGVAR(gearDefault), _gearDefault];
 
   {
-    /* TODO */
-
+    //systemChat format ["%1 --- %2", typeOf _x, [typeOf _x] call FUNC(unitType)];
+    _loadoutString = _dialogResult select ([typeOf _x] call FUNC(unitType));
+    //remove spaces from the _loadoutString so parseSimpleArray doesn't fail
+    _loadoutString = _loadoutString splitString " " joinString "";
+    _x setUnitLoadout (parseSimpleArray _loadoutString);
   } forEach _units;
 
   ["Applied module"] call Achilles_fnc_showZeusErrorMessage;
