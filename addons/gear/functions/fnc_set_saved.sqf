@@ -2,6 +2,7 @@
 /*
  * Author: cineafx
  * Adds a module to set predefined loadouts to the zeus module menu.
+ * The dialog will take "getUnitLoadout" formatted arrays
  *
  * Arguments:
  * none
@@ -24,7 +25,7 @@
   _gearAA = profileNamespace getVariable [QGVAR(gearAA), "[]"];
   _gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
 
-  //Create dialog
+  //Create dialog to allow entering of the loadout array
   private _dialogResult = [
     "Set Gear",
     [
@@ -40,12 +41,12 @@
   if (_dialogResult isEqualTo []) exitWith{};
   _dialogResult params ["_gearDefault", "_gearLeader", "_gearAT", "_gearAA", "_gearAR"];
 
-  //save loadouts to be able to use it later
+  //save loadouts to be able to use them later
   profileNamespace setVariable [QGVAR(gearDefault), _gearDefault];
   profileNamespace setVariable [QGVAR(gearLeader), _gearLeader];
   profileNamespace setVariable [QGVAR(gearAT), _gearAT];
   profileNamespace setVariable [QGVAR(gearAA), _gearAA];
   profileNamespace setVariable [QGVAR(gearAR), _gearAR];
 
-  ["Applied module"] call Achilles_fnc_showZeusErrorMessage;
+  ["Loadouts saved"] call Achilles_fnc_showZeusErrorMessage;
 }] call Ares_fnc_RegisterCustomModule;

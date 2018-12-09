@@ -18,6 +18,7 @@
 ["CINE Gear", "Apply predefined gear",
 {
 
+  //select units
   _units = [];
   if (isNull (_this select 1)) then {
     _units = ["units"] call Achilles_fnc_SelectUnits;
@@ -32,13 +33,14 @@
   _gearAA = profileNamespace getVariable [QGVAR(gearAA), "[]"];
   _gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
 
+  //apply the loadout to all units
   {
-    //systemChat format ["%1 --- %2", typeOf _x, [typeOf _x] call FUNC(unitType)];
+    //select the loadout to use
     _loadoutString = _dialogResult select ([typeOf _x] call FUNC(unitType));
     //remove spaces from the _loadoutString so parseSimpleArray doesn't fail
     _loadoutString = _loadoutString splitString " " joinString "";
     _x setUnitLoadout (parseSimpleArray _loadoutString);
   } forEach _units;
 
-  ["Applied module"] call Achilles_fnc_showZeusErrorMessage;
+  ["Loadouts applied"] call Achilles_fnc_showZeusErrorMessage;
 }] call Ares_fnc_RegisterCustomModule;
