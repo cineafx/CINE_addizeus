@@ -1,4 +1,4 @@
 #include "script_component.hpp"
 
-[] call FUNC(apply_saved);
-[] call FUNC(set_saved);
+[] call FUNC(module_apply_saved);
+[] call FUNC(module_set_saved);
