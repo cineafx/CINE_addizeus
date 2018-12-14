@@ -22,3 +22,5 @@
 
   [objNull, "Loadouts saved"] call bis_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
+
+true;

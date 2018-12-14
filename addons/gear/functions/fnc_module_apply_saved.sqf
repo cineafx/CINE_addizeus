@@ -17,7 +17,6 @@
 
 ["CINE Gear", "Predefined gear: Apply",
 {
-
   //select units
   _units = [];
   if (isNull (_this select 1)) then {
@@ -30,3 +29,5 @@
 
   [objNull, "Loadouts applied"] call bis_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;
+
+true;
