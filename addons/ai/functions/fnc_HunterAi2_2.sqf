@@ -45,10 +45,9 @@
     _handle = [{
       params["_parm","_handle"];
 
-      _unit = _parm select 0;
+      _group = _parm select 0;
       _nearestdist = _parm select 1;
 
-      _group = group _unit;
       _leader = leader _group;
 
       if ({ alive _x } count units _group == 0) exitWith {
@@ -116,7 +115,7 @@
         {doStop _x; _x doFollow leader _group;} forEach units _group;
       };
 
-    }, 5, [_this select 1, _nearestdist]] call CBA_fnc_addPerFrameHandler;
+    }, 5, [_x, _nearestdist]] call CBA_fnc_addPerFrameHandler;
   } forEach _groups;
 
   ["Applied module"] call Achilles_fnc_showZeusErrorMessage;
