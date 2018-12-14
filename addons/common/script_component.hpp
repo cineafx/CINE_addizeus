@@ -1,6 +1,6 @@
 #define COMPONENT common
 #define COMPONENT_BEAUTIFIED Common
-#include "\z\cine_addizeus\addons\common\script_mod.hpp"
+#include "\z\cine_addizeus\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
@@ -15,4 +15,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_COMMON
 #endif
 
-#include "\z\cine_addizeus\addons\common\script_macros.hpp"
+#include "\z\cine_addizeus\addons\main\script_macros.hpp"
