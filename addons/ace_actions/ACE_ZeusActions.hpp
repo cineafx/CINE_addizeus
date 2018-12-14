@@ -110,7 +110,7 @@ class ACE_ZeusActions {
       class zeus_rating_reset {
         displayName = "Rating reset";
         condition = "true";
-        statement = "{_x addRating -10000;} forEach (curatorSelected select 0);";
+        statement = "{_x addRating -(rating player);} forEach (curatorSelected select 0);";
         icon = "\a3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_unchecked_ca.paa";
       };
     };
