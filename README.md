@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cineafx/CINE_addizeus.svg?branch=master)](https://travis-ci.org/cineafx/CINE_addizeus)
+
 ## Additional Zeus Things
 
 [Steam Workshop link](https://steamcommunity.com/sharedfiles/filedetails/?id=1355571744)
