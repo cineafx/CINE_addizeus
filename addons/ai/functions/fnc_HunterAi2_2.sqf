@@ -16,7 +16,7 @@
  * Public: [No]
  */
 
-["CINE AI", "Hunter AI 2.2",
+["CINE AI", "Hunter AI V2.2",
 {
 
   _groups = [];

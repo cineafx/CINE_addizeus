@@ -16,7 +16,7 @@
  * Public: [No]
  */
 
-["CINE AI", "Hunter AI 2.0",
+["CINE AI", "Hunter AI V2.0",
 {
   _handle = [{
     params["_unit","_handle"];

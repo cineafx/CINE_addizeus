@@ -16,7 +16,7 @@
  * Public: [No]
  */
 
-["CINE AI", "Hunter AI 2.1",
+["CINE AI", "Hunter AI V2.1",
 {
 
   if (isNull (_this select 1)) exitWith {
