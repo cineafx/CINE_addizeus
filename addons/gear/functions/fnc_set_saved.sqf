@@ -25,7 +25,7 @@ _gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
 
 //Create dialog to allow entering of the loadout array
 private _dialogResult = [
-  "Set Gear",
+  "Set Gear (Uses ACE arsenal export format)",
   [
     ["Default", "", _gearDefault],
     ["Leader", "", _gearLeader],
