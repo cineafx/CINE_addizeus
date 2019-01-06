@@ -54,6 +54,7 @@
     (units _x) join _groupZMB;
 
     {
+      [_x, "ACE_NoVoice"] remoteExecCall ["setSpeaker", 0, _x];
       [{
         params["_args","_handle"];
         _args params ["_unit"];
