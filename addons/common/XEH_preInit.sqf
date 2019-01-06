@@ -17,3 +17,13 @@ ADDON = true;
   2,
   {call FUNC(update_zeus_camera_height)}
 ] call CBA_settings_fnc_init;
+
+[
+  QGVAR(debug),
+  "CHECKBOX",
+  ["Show debug output", "Shows systemChat messages with debug infomations"],
+  ["CINE Additional Zeus","Debug"],
+  false,
+  2,
+  {}
+] call CBA_settings_fnc_init;

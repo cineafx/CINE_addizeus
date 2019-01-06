@@ -81,7 +81,9 @@
       _leader = leader _group;
 
       if ({ alive _x } count units _group == 0) exitWith {
-        systemChat format["All units from group are dead. Removing PerFrameHandler: %1", _handle];
+        if (EGVAR(common,debug)) then {
+          systemChat format["All units from group are dead. Removing PerFrameHandler: %1", _handle];
+        };
         [_handle] call CBA_fnc_removePerFrameHandler;
       };
 
