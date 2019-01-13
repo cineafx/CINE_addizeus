@@ -1,6 +1,6 @@
 ﻿# CONTRIBUTOR LIST
 
 # CORE TEAM
-
+cineafx <cineafx@gmail.com>
 
 # CONTRIBUTORS
