@@ -27,3 +27,26 @@ ADDON = true;
   2,
   {}
 ] call CBA_settings_fnc_init;
+
+if (isClass (configFile >> 'cfgPatches' >> "TFAR_core")) then {
+  /*
+  [
+    QGVAR(radio_SW),
+    "LIST",
+    ["Keep SW radio", "Which TFAR shortwave radio to keep"],
+    ["CINE Additional Zeus","Radios"],
+    [[-1,0,1,2,3], ["Keep all", "Keep blufor only", "Keep opfor only", "Keep independent only", "Remove all"], 0],
+    2,
+    {call FUNC(set_zeus_radios)}
+  ] call CBA_settings_fnc_init;*/
+
+  [
+    QGVAR(radio_LR),
+    "LIST",
+    ["Keep LR radio", "Which TFAR longrange radio to keep"],
+    ["CINE Additional Zeus","Radios"],
+    [[-1,0,1,2,3], ["Keep all", "Keep blufor only", "Keep opfor only", "Keep independent only", "Remove all"], 0],
+    2,
+    {call FUNC(set_zeus_radios)}
+  ] call CBA_settings_fnc_init;
+};
