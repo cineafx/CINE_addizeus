@@ -21,7 +21,27 @@
   _SWradios = TFAR_currentUnit call TFAR_fnc_radiosList;
   GVAR(radio_SW)*/
 
-  switch (GVAR(radio_LR)) do {
+  private _LrType = GVAR(radio_LR);
+
+  if (_LrType == 4) then {
+    //create an array with [sideID used in this script, player numbers of that side]
+    private _west = [0, playersNumber west];
+    private _east = [1, playersNumber east];
+    private _independent = [2, playersNumber independent];
+
+    //select the max
+    private _max = _west;
+    if (_east # 1 > _max # 1) then {
+      _max = _east;
+    };
+    if (_independent # 1 > _max # 1) then {
+      _max = _independent;
+    };
+    //overwrite the _LrType so it now applies to "keep side with most players"
+    _LrType = _max # 0;
+  };
+
+  switch (_LrType) do {
     case (-1): {
       //Keep all (create them again if they don't exist)
       if (isnil "TF_curator_backpack_1") then {
