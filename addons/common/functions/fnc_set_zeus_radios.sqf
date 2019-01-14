@@ -15,7 +15,8 @@
  * Public: [No]
  */
 
-[{time > 0 && !(isNull player)}, {
+//check that mission has started
+[{time > 0 && !(isNull player) && (getClientStateNumber == 0 || getClientStateNumber >= 10)}, {
  /*
   private ["_SWradios"]
   _SWradios = TFAR_currentUnit call TFAR_fnc_radiosList;
@@ -30,7 +31,11 @@
     private _independent = [2, playersNumber independent];
 
     //select the max
-    private _max = _west;
+    //This line makes sure that if no players are connected (outside the zeus) it keeps all radios
+    private _max = [-1, 0];
+    if (_west # 1 > _max # 1) then {
+      _max = _west;
+    };
     if (_east # 1 > _max # 1) then {
       _max = _east;
     };
@@ -39,6 +44,13 @@
     };
     //overwrite the _LrType so it now applies to "keep side with most players"
     _LrType = _max # 0;
+
+    if (_max # 0 == -1) then {
+      [FUNC(set_zeus_radios), [], 120] call CBA_fnc_waitAndExecute;
+      if (EGVAR(common,debug)) then {
+        systemChat format["No other players connected. Trying again in 120 seconds..."];
+      };
+    };
   };
 
   switch (_LrType) do {
