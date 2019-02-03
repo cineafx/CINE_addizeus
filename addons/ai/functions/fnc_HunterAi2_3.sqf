@@ -33,7 +33,22 @@ params ["_groups", "_nearestdist", "_AiType"];
       [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
-    _group setbehaviour "AWARE";
+    switch (_AiType) do {
+      case ("TACTICAL"): {
+        _group setbehaviour "COMBAT";
+        _group setCombatMode "RED";
+        _group setSpeedMode "NORMAL"
+      };
+      case ("AGGRESSIVE_PUSH"): {
+        _group setbehaviour "AWARE";
+        _group setCombatMode "YELLOW";
+        _group setSpeedMode "FULL";
+        {
+          _x disableAI "COVER";
+        } foreach units _group;
+      };
+    };
+
     {
       _x disableAI "AUTOCOMBAT";
       _x disableAI "SUPPRESSION";
@@ -107,7 +122,7 @@ params ["_groups", "_nearestdist", "_AiType"];
             _wp setWaypointSpeed "FULL";
             _wp setWaypointType "SAD";
             _wp setWaypointBehaviour "AWARE";
-            _wp setWaypointCombatMode "GREEN";
+            _wp setWaypointCombatMode "RED";
             _wp setWaypointCompletionRadius 1;
             if (_leader distance _target < 10) then {
               {deleteWaypoint _x} forEach (waypoints _group);
