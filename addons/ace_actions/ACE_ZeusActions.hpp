@@ -38,7 +38,7 @@ class ACE_ZeusActions {
     };
     class zeus_VCOM {
       displayName = "VCOM";
-      condition = "isClass(configFile >> 'CfgPatches' >> 'Vcm_AIMod')";
+      condition = "isClass(configFile >> 'CfgPatches' >> 'VCOM_AI')";
       statement = "";
       icon = "\a3\ui_f\data\gui\Rsc\RscDisplayMain\menu_options_ca.paa";
       class zeus_VCOM_enable {
