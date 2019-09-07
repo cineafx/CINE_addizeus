@@ -10,10 +10,16 @@
  * nothing
  *
  * Example:
- * [] call CINE_addizeus_main_fnc_set_zeus_radios
+ * [] call CINE_addizeus_common_fnc_set_zeus_radios
  *
  * Public: [No]
  */
+
+#define BASIC_RADIO QUOTE(ItemRadio)
+#define SW_WEST QUOTE(TFAR_anprc152)
+#define SW_EAST QUOTE(TFAR_fadak)
+#define SW_INDEPENDENT QUOTE(TFAR_anprc148jem)
+#define SW_ALL [ARR_3(SW_WEST, SW_EAST, SW_INDEPENDENT)]
 
 //check that mission has started
 [{time > 0 && !(isNull player) && (getClientStateNumber == 0 || getClientStateNumber >= 10)}, {
@@ -22,107 +28,62 @@
   _SWradios = TFAR_currentUnit call TFAR_fnc_radiosList;
   GVAR(radio_SW)*/
 
-  private _LrType = GVAR(radio_LR);
+  private _LrType = GVAR(radio_keep_LR);
+  private _SwType = GVAR(radio_keep_SW);
 
-  if (_LrType == 4) then {
-    //create an array with [sideID used in this script, player numbers of that side]
-    private _west = [0, playersNumber west];
-    private _east = [1, playersNumber east];
-    private _independent = [2, playersNumber independent];
+  private _autoDetectType = call FUNC(get_side_with_most_players);
 
-    //select the max
-    //This line makes sure that if no players are connected (outside the zeus) it keeps all radios
-    private _max = [-1, 0];
-    if (_west # 1 > _max # 1) then {
-      _max = _west;
-    };
-    if (_east # 1 > _max # 1) then {
-      _max = _east;
-    };
-    if (_independent # 1 > _max # 1) then {
-      _max = _independent;
-    };
-    //overwrite the _LrType so it now applies to "keep side with most players"
-    _LrType = _max # 0;
-
-    if (_max # 0 == -1) then {
-      [FUNC(set_zeus_radios), [], 120] call CBA_fnc_waitAndExecute;
-      if (EGVAR(common,debug)) then {
-        systemChat format["No other players connected. Trying again in 120 seconds..."];
-      };
+  if (_autoDetectType == -1) then {
+    [FUNC(set_zeus_radios), [], 120] call CBA_fnc_waitAndExecute;
+    if (EGVAR(common,debug)) then {
+      systemChat format["No other players connected. Trying again in 120 seconds..."];
     };
   };
 
-  switch (_LrType) do {
-    case (-1): {
-      //Keep all (create them again if they don't exist)
-      if (isnil "TF_curator_backpack_1") then {
-        TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
-      };
-      if (isnil "TF_curator_backpack_2") then {
-        TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
-      };
-      if (isnil "TF_curator_backpack_3") then {
-        TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
-      };
-    };
-    case (0): {
-      //keep west
-      if (isnil "TF_curator_backpack_1") then {
-        TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
-      };
-      if (!isnil "TF_curator_backpack_2") then {
-        deleteVehicle TF_curator_backpack_2;
-        TF_curator_backpack_2 = nil;
-      };
-      if (!isnil "TF_curator_backpack_3") then {
-        deleteVehicle TF_curator_backpack_3;
-        TF_curator_backpack_3 = nil;
-      };
-    };
-    case (1): {
-      //keep east
-      if (!isnil "TF_curator_backpack_1") then {
-        deleteVehicle TF_curator_backpack_1;
-        TF_curator_backpack_1 = nil;
-      };
-      if (isnil "TF_curator_backpack_2") then {
-        TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
-      };
-      if (!isnil "TF_curator_backpack_3") then {
-        deleteVehicle TF_curator_backpack_3;
-        TF_curator_backpack_3 = nil;
-      };
-    };
-    case (2): {
-      //keep independent
-      if (!isnil "TF_curator_backpack_1") then {
-        deleteVehicle TF_curator_backpack_1;
-        TF_curator_backpack_1 = nil;
-      };
-      if (!isnil "TF_curator_backpack_2") then {
-        deleteVehicle TF_curator_backpack_2;
-        TF_curator_backpack_2 = nil;
-      };
-      if (isnil "TF_curator_backpack_3") then {
-        TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
-      };
-    };
-    case (3): {
-      //keep none
-      if (!isnil "TF_curator_backpack_1") then {
-        deleteVehicle TF_curator_backpack_1;
-        TF_curator_backpack_1 = nil;
-      };
-      if (!isnil "TF_curator_backpack_2") then {
-        deleteVehicle TF_curator_backpack_2;
-        TF_curator_backpack_2 = nil;
-      };
-      if (!isnil "TF_curator_backpack_3") then {
-        deleteVehicle TF_curator_backpack_3;
-        TF_curator_backpack_3 = nil;
-      };
+  _LrType = [_LrType, _autoDetectType] select (_LrType == 8);
+  _SwType = [_SwType, _autoDetectType] select (_SwType == 8);
+
+  _LrArray = [_LrType, 3] call FUNC(get_bool_array_from_base10);
+  _SwArray = [_SwType, 3] call FUNC(get_bool_array_from_base10);
+
+  //West
+  if (_LrArray # 0) then {
+    TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
+  } else {
+    deleteVehicle TF_curator_backpack_1;
+    TF_curator_backpack_1 = nil;
+  };
+  //East
+  if (_LrArray # 1) then {
+    TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
+  } else {
+    deleteVehicle TF_curator_backpack_2;
+    TF_curator_backpack_2 = nil;
+  };
+  //Independent
+  if (_LrArray # 2) then {
+    TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
+  } else {
+    deleteVehicle TF_curator_backpack_3;
+    TF_curator_backpack_3 = nil;
+  };
+
+
+
+  systemChat "---";
+
+  _SW_items = items ACE_PLAYER apply {
+    _parent = configName inheritsFrom (configFile >> "CfgWeapons" >> _x);
+    if (_parent == BASIC_RADIO) then {
+      configName (configFile >> "CfgWeapons" >> _x);
+    } else {
+      _parent;
     };
   };
+  //TODO
+
+  systemChat str _SW_items;
+
+  [FUNC(set_zeus_radios), [], 120] call CBA_fnc_waitAndExecute;
 
 }, []] call CBA_fnc_waitUntilAndExecute;
