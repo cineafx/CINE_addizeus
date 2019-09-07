@@ -44,35 +44,43 @@
 
     //West
     if (_LrArray # 0) then {
-      TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
+      if (isNil "TF_curator_backpack_1") then {
+        TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
+      };
     } else {
       deleteVehicle TF_curator_backpack_1;
       TF_curator_backpack_1 = nil;
     };
     //East
     if (_LrArray # 1) then {
-      TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
+      if (isNil "TF_curator_backpack_2") then {
+        TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
+      };
     } else {
       deleteVehicle TF_curator_backpack_2;
       TF_curator_backpack_2 = nil;
     };
     //Independent
     if (_LrArray # 2) then {
-      TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
+      if (isNil "TF_curator_backpack_3") then {
+        TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
+      };
     } else {
       deleteVehicle TF_curator_backpack_3;
       TF_curator_backpack_3 = nil;
     };
   };
 
-  /* Shortwave */
-  if (_SwType >= 0) then {
-    _SwType = [_SwType, _autoDetectType] select (_SwType == 8);
-    _SwArray = [_SwType, 3] call FUNC(get_bool_array_from_base10);
+  if (!isNull (getAssignedCuratorLogic CURATOR_UNIT)) then {
+    /* Shortwave */
+    if (_SwType >= 0) then {
+      _SwType = [_SwType, _autoDetectType] select (_SwType == 8);
+      _SwArray = [_SwType, 3] call FUNC(get_bool_array_from_base10);
 
-    [CURATOR_UNIT, SW_WEST,        BASIC_RADIO, _SwArray # 0] call FUNC(manage_inventory_item);
-    [CURATOR_UNIT, SW_EAST,        BASIC_RADIO, _SwArray # 1] call FUNC(manage_inventory_item);
-    [CURATOR_UNIT, SW_INDEPENDENT, BASIC_RADIO, _SwArray # 2] call FUNC(manage_inventory_item);
+      [CURATOR_UNIT, SW_WEST,        BASIC_RADIO, _SwArray # 0] call FUNC(manage_inventory_item);
+      [CURATOR_UNIT, SW_EAST,        BASIC_RADIO, _SwArray # 1] call FUNC(manage_inventory_item);
+      [CURATOR_UNIT, SW_INDEPENDENT, BASIC_RADIO, _SwArray # 2] call FUNC(manage_inventory_item);
+    };
   };
 
 }, []] call CBA_fnc_waitUntilAndExecute;

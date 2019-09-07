@@ -1486,4 +1486,4 @@ if __name__ == "__main__":
     if ciBuild:
         sys.exit(0)
 
-    input("Press Enter to continue...")
+    #input("Press Enter to continue...")
