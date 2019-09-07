@@ -29,41 +29,6 @@ ADDON = true;
 ] call CBA_settings_fnc_init;
 
 if (isClass (configFile >> 'cfgPatches' >> "TFAR_core")) then {
-
-  //check compabilty
-  if(!(isNil QGVAR(radio_keep_LR))) then {
-    switch(GVAR(radio_LR)) do {
-      //Keep all
-      case (-1) : {
-        GVAR(radio_keep_LR) = 7;
-      };
-      //blue
-      case (0) : {
-        GVAR(radio_keep_LR) = 1;
-      };
-      //red
-      case (1) : {
-        GVAR(radio_keep_LR) = 2;
-      };
-      //independent
-      case (2) : {
-        GVAR(radio_keep_LR) = 4;
-      };
-      //remove all
-      case (3) : {
-        GVAR(radio_keep_LR) = 0;
-      };
-      //automatic
-      case (4) : {
-        GVAR(radio_keep_LR) = 8;
-      };
-    };
-    GVAR(radio_LR) = nil;
-  };
-
-  //ISNILS(GVAR(radio_keep_SW), GVAR(radio_SW));
-  //ISNILS(GVAR(radio_keep_LR), GVAR(radio_LR));
-
   [
     QGVAR(radio_keep_SW),
     "LIST",
