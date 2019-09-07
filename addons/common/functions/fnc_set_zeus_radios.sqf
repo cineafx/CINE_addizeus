@@ -19,14 +19,10 @@
 #define SW_WEST QUOTE(TFAR_anprc152)
 #define SW_EAST QUOTE(TFAR_fadak)
 #define SW_INDEPENDENT QUOTE(TFAR_anprc148jem)
-#define SW_ALL [ARR_3(SW_WEST, SW_EAST, SW_INDEPENDENT)]
+#define CURATOR_UNIT (ACE_PLAYER)
 
 //check that mission has started
 [{time > 0 && !(isNull player) && (getClientStateNumber == 0 || getClientStateNumber >= 10)}, {
- /*
-  private ["_SWradios"]
-  _SWradios = TFAR_currentUnit call TFAR_fnc_radiosList;
-  GVAR(radio_SW)*/
 
   private _LrType = GVAR(radio_keep_LR);
   private _SwType = GVAR(radio_keep_SW);
@@ -40,50 +36,42 @@
     };
   };
 
-  _LrType = [_LrType, _autoDetectType] select (_LrType == 8);
-  _SwType = [_SwType, _autoDetectType] select (_SwType == 8);
+  /* Longrange */
+  if (_LrType >= 0) then {
+    _LrType = [_LrType, _autoDetectType] select (_LrType == 8);
+    _LrArray = [_LrType, 3] call FUNC(get_bool_array_from_base10);
 
-  _LrArray = [_LrType, 3] call FUNC(get_bool_array_from_base10);
-  _SwArray = [_SwType, 3] call FUNC(get_bool_array_from_base10);
-
-  //West
-  if (_LrArray # 0) then {
-    TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
-  } else {
-    deleteVehicle TF_curator_backpack_1;
-    TF_curator_backpack_1 = nil;
-  };
-  //East
-  if (_LrArray # 1) then {
-    TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
-  } else {
-    deleteVehicle TF_curator_backpack_2;
-    TF_curator_backpack_2 = nil;
-  };
-  //Independent
-  if (_LrArray # 2) then {
-    TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
-  } else {
-    deleteVehicle TF_curator_backpack_3;
-    TF_curator_backpack_3 = nil;
-  };
-
-
-
-  systemChat "---";
-
-  _SW_items = items ACE_PLAYER apply {
-    _parent = configName inheritsFrom (configFile >> "CfgWeapons" >> _x);
-    if (_parent == BASIC_RADIO) then {
-      configName (configFile >> "CfgWeapons" >> _x);
+    //West
+    if (_LrArray # 0) then {
+      TF_curator_backpack_1 = TFAR_DefaultRadio_Airborne_West createVehicleLocal [0, 0, 0];
     } else {
-      _parent;
+      deleteVehicle TF_curator_backpack_1;
+      TF_curator_backpack_1 = nil;
+    };
+    //East
+    if (_LrArray # 1) then {
+      TF_curator_backpack_2 = TFAR_DefaultRadio_Airborne_East createVehicleLocal [0, 0, 0];
+    } else {
+      deleteVehicle TF_curator_backpack_2;
+      TF_curator_backpack_2 = nil;
+    };
+    //Independent
+    if (_LrArray # 2) then {
+      TF_curator_backpack_3 = TFAR_DefaultRadio_Airborne_Independent createVehicleLocal [0, 0, 0];
+    } else {
+      deleteVehicle TF_curator_backpack_3;
+      TF_curator_backpack_3 = nil;
     };
   };
-  //TODO
 
-  systemChat str _SW_items;
+  /* Shortwave */
+  if (_SwType >= 0) then {
+    _SwType = [_SwType, _autoDetectType] select (_SwType == 8);
+    _SwArray = [_SwType, 3] call FUNC(get_bool_array_from_base10);
 
-  [FUNC(set_zeus_radios), [], 120] call CBA_fnc_waitAndExecute;
+    [CURATOR_UNIT, SW_WEST,        BASIC_RADIO, _SwArray # 0] call FUNC(manage_inventory_item);
+    [CURATOR_UNIT, SW_EAST,        BASIC_RADIO, _SwArray # 1] call FUNC(manage_inventory_item);
+    [CURATOR_UNIT, SW_INDEPENDENT, BASIC_RADIO, _SwArray # 2] call FUNC(manage_inventory_item);
+  };
 
 }, []] call CBA_fnc_waitUntilAndExecute;

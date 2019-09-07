@@ -69,18 +69,20 @@ if (isClass (configFile >> 'cfgPatches' >> "TFAR_core")) then {
     "LIST",
     ["Keep SW radio", "Which TFAR shortwave radio to keep"],
     ["CINE Additional Zeus","Radios"],
-    [[7,1,2,4, 3,5,6, 0,8],[ "Keep all",
-                              "Keep blufor only",
-                              "Keep opfor only",
-                              "Keep independent only",
+    [[-1, 7,1,2,4, 3,5,6, 0,8],[ "Feature disabled",
 
-                              "Keep blufor and opfor",
-                              "Keep blufor and independent",
-                              "Keep opfor and independent",
+                                 "Keep all",
+                                 "Keep blufor only",
+                                 "Keep opfor only",
+                                 "Keep independent only",
 
-                              "Remove all",
-                              "Keep side with most players"
-                            ], 0],
+                                 "Keep blufor and opfor",
+                                 "Keep blufor and independent",
+                                 "Keep opfor and independent",
+
+                                 "Remove all",
+                                 "Keep side with most players"
+                               ], 0],
     2,
     {call FUNC(set_zeus_radios)}
   ] call CBA_settings_fnc_init;
@@ -90,18 +92,20 @@ if (isClass (configFile >> 'cfgPatches' >> "TFAR_core")) then {
     "LIST",
     ["Keep LR radio", "Which TFAR longrange radio to keep"],
     ["CINE Additional Zeus","Radios"],
-    [[7,1,2,4, 3,5,6, 0,8],[ "Keep all",
-                              "Keep blufor only",
-                              "Keep opfor only",
-                              "Keep independent only",
+    [[-1, 7,1,2,4, 3,5,6, 0,8],[ "Feature disabled",
 
-                              "Keep blufor and opfor",
-                              "Keep blufor and independent",
-                              "Keep opfor and independent",
+                                 "Keep all",
+                                 "Keep blufor only",
+                                 "Keep opfor only",
+                                 "Keep independent only",
 
-                              "Remove all",
-                              "Keep side with most players"
-                            ], 0],
+                                 "Keep blufor and opfor",
+                                 "Keep blufor and independent",
+                                 "Keep opfor and independent",
+
+                                 "Remove all",
+                                 "Keep side with most players"
+                               ], 0],
     2,
     {call FUNC(set_zeus_radios)}
   ] call CBA_settings_fnc_init;
