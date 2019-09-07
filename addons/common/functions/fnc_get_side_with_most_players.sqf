@@ -22,7 +22,7 @@ private _independent = [4, playersNumber independent];
 
 //select the max
 //This line makes sure that if no players are connected (outside the zeus) it keeps all radios
-private _max = [-1, 0];
+private _max = [7, 0];
 if (_west # 1 > _max # 1) then {
   _max = _west;
 };

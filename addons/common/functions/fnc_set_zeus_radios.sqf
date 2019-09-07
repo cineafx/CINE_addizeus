@@ -15,6 +15,7 @@
  * Public: [No]
  */
 
+//TODO: https://github.com/michail-nikolaev/task-force-arma-3-radio/blob/1.0/addons/core/functions/fnc_getSideRadio.sqf
 #define BASIC_RADIO QUOTE(ItemRadio)
 #define SW_WEST QUOTE(TFAR_anprc152)
 #define SW_EAST QUOTE(TFAR_fadak)
@@ -29,7 +30,7 @@
 
   private _autoDetectType = call FUNC(get_side_with_most_players);
 
-  if (_autoDetectType == -1) then {
+  if (_autoDetectType == 7) then {
     [FUNC(set_zeus_radios), [], 120] call CBA_fnc_waitAndExecute;
     if (EGVAR(common,debug)) then {
       systemChat format["No other players connected. Trying again in 120 seconds..."];
