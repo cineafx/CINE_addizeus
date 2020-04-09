@@ -13,6 +13,7 @@ class CfgPatches {
     };
 };
 
+#include "CfgHints.hpp"
 #include "CfgEventHandlers.hpp"
 
 //TODO
