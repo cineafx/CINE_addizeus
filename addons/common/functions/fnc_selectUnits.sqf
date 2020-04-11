@@ -59,16 +59,12 @@ private _handler_id = _display displayAddEventHandler ["KeyDown",
   if (_key == 1) then { GVAR(SUBMIT_SELECTION) = false; true} else {false};
 }];
 
-// executed when the choice is submitted or cancled
-//waitUntil {!isNil QGVAR(SUBMIT_SELECTION) or {isNull findDisplay 312}};
-
 [{
   //condition
   !isNil QGVAR(SUBMIT_SELECTION) || {isNull findDisplay 312}
 }, {
   //action
   params ["_display", "_handler_id", "_single"];
-
 
   // remove the key handler and the message
   _display displayRemoveEventHandler ["KeyDown", _handler_id];
