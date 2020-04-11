@@ -11,14 +11,14 @@
  * nothing
  *
  * Example:
- * [] call CINE_addizeus_gear_fnc_set_saved
+ * [] call CINE_addizeus_gear_fnc_moduleSetSaved
  *
  * Public: [No]
  */
 
 ["CINE Gear", "Predefined gear: Set",
 {
-  [] call FUNC(set_saved);
+  [] call FUNC(setSaved);
 
   [objNull, "Loadouts saved"] call bis_fnc_showCuratorFeedbackMessage;
 }] call Ares_fnc_RegisterCustomModule;

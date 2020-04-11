@@ -18,14 +18,14 @@
  * None
  *
  * Example:
+ * ["units"] call EFUNC(common,selectedUnits);
  * [{
  *   // Wait for done
  *   !isNil QEGVAR(common, selectedUnits)
  * },{
  *   // Do stuff if done
- *   systemChat str EGVAR(common, selectedUnits)
+ *   systemChat str EGVAR(common,selectedUnits)
  * }] call CBA_fnc_waitUntilAndExecute;
- * ["units"] call EFUNC(common, selectedUnits);
  *
  * Public: No
  */

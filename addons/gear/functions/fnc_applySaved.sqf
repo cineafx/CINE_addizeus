@@ -17,6 +17,8 @@
 
 params [["_units", [], [[objNull]] ]];
 
+TRACE_1("applySavedUnits",_units);
+
 //get previously used loadout
 _gearDefault = profileNamespace getVariable [QGVAR(gearDefault), "[]"];
 _gearLeader = profileNamespace getVariable [QGVAR(gearLeader), "[]"];

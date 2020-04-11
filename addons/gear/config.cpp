@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {QGVAR(test), QGVAR(test2)};
+        units[] = {QGVAR(test), QGVAR(test2), QGVAR(moduleApplySaved)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cine_addizeus_main"};

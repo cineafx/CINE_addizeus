@@ -1,6 +1,6 @@
-PREP(apply_saved);
-PREP(module_apply_saved);
-PREP(module_set_saved);
-PREP(set_saved);
+PREP(applySaved);
+PREP(moduleApplySaved);
+PREP(moduleSetSaved);
+PREP(setSaved);
 PREP(unitType);
 PREP(moduleTest);

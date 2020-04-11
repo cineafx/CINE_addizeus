@@ -11,7 +11,7 @@
  * nothing
  *
  * Example:
- * [] call CINE_addizeus_gear_fnc_set_saved
+ * [] call CINE_addizeus_gear_fnc_setSaved
  *
  * Public: [No]
  */
