@@ -71,7 +71,7 @@ class CfgVehicles
         functionPriority = 0;
         isDisposable = 0;
         function = QFUNC(moduleTest);
-        curatorInfoType = QGVAR(RscDisplayTest);
+        curatorInfoType = QGVAR(RscSetSaved);
         class ModuleDescription {
             description = "test 2 description";
             sync[] = {};

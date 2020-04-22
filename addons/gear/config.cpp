@@ -24,5 +24,7 @@ class CfgFactionClasses
     };
 };
 
-#include "RscAttributes.hpp"
+#include "ui\RscAttributes.hpp"
 #include "CfgVehicles.hpp"
+
+//https://github.com/kayler-renslow/arma-dialog-creator
