@@ -17,35 +17,6 @@
  * Public: [No]
  */
 
-params ["_logic", "_units", "_activated"];
-
-TRACE_3("params",_logic,_units,_activated);
-
-if (!_activated) exitWith {};
-//if (!isServer) exitWith {};
-
-private _unit = attachedTo _logic;
-
-if (!isNull _logic) then {
-    deleteVehicle _logic;
-};
-
-if (!isNull _unit) exitWith {
-    [[_unit]] call FUNC(clearInventory);
-    [objNull, "Inventory cleared."] call bis_fnc_showCuratorFeedbackMessage;
-    playSound "FD_Start_F";
-};
-
-["units"] call EFUNC(common,selectUnits);
-[{
-  // Wait for done
-  !isNil QEGVAR(common,selectedUnits)
-},{
-  // Do stuff if done
-  [EGVAR(common,selectedUnits)] call FUNC(clearInventory);
-  [objNull, "Inventory cleared."] call bis_fnc_showCuratorFeedbackMessage;
-  playSound "FD_Start_F";
-
-}] call CBA_fnc_waitUntilAndExecute;
+[_this, DFUNC(clearInventory), "Inventory cleared.",[], "Vehicles"] call EFUNC(common,moduleHandler);
 
 true;

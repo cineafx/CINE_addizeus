@@ -17,6 +17,6 @@
  * Public: [No]
  */
 
-[_this, DFUNC(applySaved), "Loadouts applied", [], "Units"] call EFUNC(common,moduleHandler);
+[_this, DFUNC(hunterAi), "Hunter Ai enabled", [750, "TACTICAL"], "Units"] call EFUNC(common,moduleHandler);
 
 true;

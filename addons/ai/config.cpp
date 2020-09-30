@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {};
+        units[] = {QGVAR(hunterAi)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cine_addizeus_main", "ACE_common"};
@@ -14,3 +14,14 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+class CfgFactionClasses
+{
+    class NO_CATEGORY;
+    class GVAR(moduleAi): NO_CATEGORY
+    {
+        displayName = "CINE Ai";
+    };
+};
+
+#include "CfgVehicles.hpp"
