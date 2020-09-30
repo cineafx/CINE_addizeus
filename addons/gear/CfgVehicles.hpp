@@ -31,11 +31,11 @@ class CfgVehicles
         function = QFUNC(moduleApplySaved);
         class Arguments {};
         class ModuleDescription: ModuleDescription {
-            description = "Apply the saved loadout to a selection of units";
+            description = "Apply the saved loadout to a selection of units.";
             sync[] = {};
         };
     };
-    class GVAR(test2): Module_F {
+    class GVAR(moduleSetSaved): Module_F {
         author = "cineafx";
         category = QGVAR(moduleGear);
         displayName = "Set saved loadout";
@@ -49,7 +49,7 @@ class CfgVehicles
         function = QFUNC(moduleSetSaved);
         //curatorInfoType = QGVAR(RscSetSaved);
         class ModuleDescription {
-            description = "test 2 description";
+            description = "Save a loadout for the gear script.";
             sync[] = {};
         };
     };
