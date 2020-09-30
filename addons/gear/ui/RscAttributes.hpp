@@ -19,7 +19,7 @@ class GVAR(RscEdit_gear) {
   autocomplete = "";
   colorBackground[] = {0.1,0.1,0.1,0.9};
   colorDisabled[] = {0.5,0.5,0.5,0.9};
-  colorSelection[] = {0.5,0.5,0.5,0.25};
+  colorSelection[] = {0.6,0.6,0.6,0.5};
   colorText[] = {1,1,1,1};
   font = "PuristaMedium";
   sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1);
