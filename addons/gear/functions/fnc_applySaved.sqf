@@ -29,6 +29,8 @@ _gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
 //create loadouts array to be able to use select later on
 _loadouts = [_gearDefault, _gearLeader, _gearAT, _gearAA, _gearAR];
 
+TRACE_5("loadout", _gearDefault, _gearLeader, _gearAT, _gearAA, _gearAR);
+
 //apply the loadout to all units
 {
   //select the loadout to use

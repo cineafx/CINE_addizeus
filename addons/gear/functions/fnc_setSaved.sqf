@@ -16,34 +16,13 @@
  * Public: [No]
  */
 
-//get previously used loadouts
-_gearDefault = profileNamespace getVariable [QGVAR(gearDefault), "[]"];
-_gearLeader = profileNamespace getVariable [QGVAR(gearLeader), "[]"];
-_gearAT = profileNamespace getVariable [QGVAR(gearAT), "[]"];
-_gearAA = profileNamespace getVariable [QGVAR(gearAA), "[]"];
-_gearAR = profileNamespace getVariable [QGVAR(gearAR), "[]"];
-
-//Create dialog to allow entering of the loadout array
-private _dialogResult = [
-  "Set Gear (Uses ACE arsenal export format)",
-  [
-    ["Default", "", _gearDefault],
-    ["Leader", "", _gearLeader],
-    ["AT", "", _gearAT],
-    ["AA", "", _gearAA],
-    ["AR", "", _gearAR]
-  ]
-] call Ares_fnc_showChooseDialog;
-
-//did the dialog return empty
-if (_dialogResult isEqualTo []) exitWith{};
-_dialogResult params ["_gearDefault", "_gearLeader", "_gearAT", "_gearAA", "_gearAR"];
-
 //save loadouts to be able to use them later
-profileNamespace setVariable [QGVAR(gearDefault), _gearDefault];
-profileNamespace setVariable [QGVAR(gearLeader), _gearLeader];
-profileNamespace setVariable [QGVAR(gearAT), _gearAT];
-profileNamespace setVariable [QGVAR(gearAA), _gearAA];
-profileNamespace setVariable [QGVAR(gearAR), _gearAR];
+profileNamespace setVariable [QGVAR(gearDefault), ctrlText CT_GEAR_DEFAULT];
+profileNamespace setVariable [QGVAR(gearLeader), ctrlText CT_GEAR_LEADER];
+profileNamespace setVariable [QGVAR(gearAT), ctrlText CT_GEAR_AT];
+profileNamespace setVariable [QGVAR(gearAA), ctrlText CT_GEAR_AA];
+profileNamespace setVariable [QGVAR(gearAR), ctrlText CT_GEAR_AR];
+
+closeDialog 1;
 
 true;

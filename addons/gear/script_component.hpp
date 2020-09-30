@@ -16,3 +16,12 @@
 #endif
 
 #include "\z\cine_addizeus\addons\main\script_macros.hpp"
+
+
+//Gear idcs
+#define CT_GEAR_DEFAULT           0
+#define CT_GEAR_LEADER            1
+#define CT_GEAR_AT                2
+#define CT_GEAR_AA                3
+#define CT_GEAR_AR                4
+

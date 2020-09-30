@@ -16,11 +16,14 @@
  * Public: [No]
  */
 
-["CINE Gear", "Predefined gear: Set",
-{
-  [] call FUNC(setSaved);
+params ["_logic", "_units", "_activated"];
 
-  [objNull, "Loadouts saved"] call bis_fnc_showCuratorFeedbackMessage;
-}] call Ares_fnc_RegisterCustomModule;
+TRACE_3("params",_logic,_units,_activated);
+
+createDialog QGVAR(RscSetSaved);
+
+if (!isNull _logic) then {
+    deleteVehicle _logic;
+};
 
 true;
