@@ -19,6 +19,14 @@
 params ["_units", "_args"];
 _args params ["_nearestdist", "_aiType"];
 
+private _groups = [];
+{
+  private _group = group _x;
+  if (_group != grpNull) then {
+    _groups pushBackUnique _group;
+  }
+} forEach _units;
+
 {
 
   _handle = [{

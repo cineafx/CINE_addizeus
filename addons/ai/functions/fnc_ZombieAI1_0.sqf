@@ -17,7 +17,7 @@
  * Public: [No]
  */
 
-["CINE AI", "Zombie AI V1.0",
+["CINE Ai", "Zombie AI V1.0",
 {
   _groups = [];
   if (isNull (_this select 1)) then  {

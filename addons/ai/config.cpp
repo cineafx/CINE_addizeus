@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {QGVAR(hunterAi)};
+        units[] = {QGVAR(moduleHunterAiTactical), QGVAR(moduleHunterAiAggressive), QGVAR(moduleHunterAiSettings)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cine_addizeus_main", "ACE_common"};
