@@ -17,6 +17,6 @@
  * Public: [No]
  */
 
-[_this, DFUNC(hunterAi), "Hunter Ai enabled", [750, "TACTICAL"], "Units"] call EFUNC(common,moduleHandler);
+[_this, DFUNC(hunterAi), "Hunter Ai enabled", [GVAR(hunterAi_seek_range), "TACTICAL"], "Units"] call EFUNC(common,moduleHandler);
 
 true;

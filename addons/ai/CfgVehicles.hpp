@@ -54,23 +54,4 @@ class CfgVehicles
             sync[] = {};
         };
     };
-    class GVAR(moduleHunterAiSettings): Module_F {
-        author = "cineafx";
-        category = QGVAR(moduleAi);
-        displayName = "Hunter Ai Settings";
-        //icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
-        scope = 1;  //show in editor
-        scopeCurator = 2;
-        isGlobal = 0; //run on server
-        isTriggerActivated  = 0; //Wait for triggers
-        isDisposable = 0;
-        functionPriority = 0;
-        curatorCanAttach = 0;
-        function = QFUNC(moduleHunterAiSettings);
-        //curatorInfoType = QGVAR();
-        class ModuleDescription: ModuleDescription {
-            description = "";
-            sync[] = {};
-        };
-    };
 };

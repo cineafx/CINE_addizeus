@@ -5,7 +5,12 @@
  * TODO: add more precise description
  *
  * Arguments:
- * none
+ * 0: Selected units. <object[]>
+ * 1: Further arguments. <array>
+ *
+ * Further arguments:
+ * 0: nearestdistance. <number>
+ * 1: Ai type. <string> (TACTICAL or AGGRESSIVE_PUSH)
  *
  * Return Value:
  * nothing
