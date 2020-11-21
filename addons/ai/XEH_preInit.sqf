@@ -18,3 +18,11 @@ ADDON = true;
   2
 ] call CBA_settings_fnc_init;
 
+[
+  QGVAR(zombieAi_seek_range),
+  "SLIDER",
+  ["Zombie Ai seek radius", "Number above 0"],
+  ["CINE Additional Zeus","Ai"],
+  [0, 10000, 200, 0],
+  2
+] call CBA_settings_fnc_init;

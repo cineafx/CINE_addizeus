@@ -1,6 +1,12 @@
+// Helpers
 PREP(selectionAction);
+
+// Modules handler
 PREP(moduleHunterAiTactical);
 PREP(moduleHunterAiAggressive);
-PREP(hunterAi);
+PREP(moduleZombieAi);
 
-PREP(ZombieAI1_0);
+// Module code
+PREP(hunterAi);
+PREP(zombieAi);
+

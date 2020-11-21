@@ -54,4 +54,23 @@ class CfgVehicles
             sync[] = {};
         };
     };
+    class GVAR(moduleZombieAi): Module_F {
+        author = "cineafx";
+        category = QGVAR(moduleAi);
+        displayName = "Zombie Ai (GREENFOR / independent)";
+        //icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+        scope = 1;  //show in editor
+        scopeCurator = 2;
+        isGlobal = 0; //run on server
+        isTriggerActivated  = 0; //Wait for triggers
+        isDisposable = 0;
+        functionPriority = 0;
+        curatorCanAttach = 1;
+        function = QFUNC(moduleZombieAi);
+        //curatorInfoType = QGVAR();
+        class ModuleDescription: ModuleDescription {
+            description = "";
+            sync[] = {};
+        };
+    };
 };
