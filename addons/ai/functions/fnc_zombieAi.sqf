@@ -68,7 +68,6 @@ private _groups = [];
       [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
-    _group setbehaviour "CARELESS";
     {
       _x disableAI "AUTOCOMBAT";
       _x disableAI "SUPPRESSION";
@@ -81,6 +80,8 @@ private _groups = [];
       _x setUnitPos "UP";
       vehicle _x allowCrewInImmobile true;
     } foreach units _group;
+    _group setbehaviour "CARELESS";
+    _group setSpeedMode "FULL";
 
     _nearest = objNull;
     _target = objNull;
