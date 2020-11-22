@@ -34,6 +34,7 @@ private _groups = [];
   {
     [_x, "ACE_NoVoice"] remoteExecCall ["setSpeaker", 0, _x];
     _x addRating -10000;
+    removeAllWeapons _x;
     [{
       params["_args","_handle"];
       _args params ["_unit"];
@@ -77,6 +78,7 @@ private _groups = [];
       _x setSkill ["commanding", 1];
       _x allowFleeing 0;
       _x enableFatigue false;
+      _x setUnitPos "UP";
       vehicle _x allowCrewInImmobile true;
     } foreach units _group;
 
@@ -84,7 +86,7 @@ private _groups = [];
     _target = objNull;
 
     {
-      if (side _x != sideLogic && side _x != sideEnemy) then {
+      if (side _x != sideLogic && side _x != sideEnemy && !(GETVAR(_x,ACE_isUnconscious,false))) then {
         _dist = vehicle _x distance _leader;
         if (_dist < _nearestdist) then {
             _nearest = _x;
