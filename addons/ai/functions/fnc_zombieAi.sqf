@@ -30,20 +30,10 @@ private _groups = [];
 } forEach _units;
 
 {
-  _SideZMB = missionNamespace getVariable ["SideZMB", createCenter independent];
-  _SideZMB setFriend [west, 0];
-  _SideZMB setFriend [east, 1];
-  _SideZMB setFriend [civilian, 1];
-  west setFriend [_SideZMB, 0];
-  east setFriend [_SideZMB, 1];
-  civilian setFriend [_SideZMB, 1];
-  missionNamespace setVariable ["SideZMB",_SideZMB]; //TODO QGVAR
-
-  _groupZMB = createGroup _SideZMB;
-  (units _x) join _groupZMB;
 
   {
     [_x, "ACE_NoVoice"] remoteExecCall ["setSpeaker", 0, _x];
+    _x addRating -10000;
     [{
       params["_args","_handle"];
       _args params ["_unit"];
@@ -59,7 +49,7 @@ private _groups = [];
         [_handle] call CBA_fnc_removePerFrameHandler;
       };
     }, 0.5, [_x]] call CBA_fnc_addPerFrameHandler;
-  } forEach units _groupZMB;
+  } forEach units _x;
 
 
   _handle = [{
@@ -81,7 +71,8 @@ private _groups = [];
     {
       _x disableAI "AUTOCOMBAT";
       _x disableAI "SUPPRESSION";
-      _x setSkill ["endurance", 1];
+      _x disableAI "COVER";
+      _x disableAI "AIMINGERROR";
       _x setSkill ["courage", 1];
       _x setSkill ["commanding", 1];
       _x allowFleeing 0;
@@ -89,26 +80,15 @@ private _groups = [];
       vehicle _x allowCrewInImmobile true;
     } foreach units _group;
 
-    _isWestHostile = (side _group getFriend west) <= 0.6;
-    _isEastHostile = (side _group getFriend east) <= 0.6;
-    _isIndependentHostile = (side _group getFriend independent) <= 0.6;
-    _isCivilianHostile = (side _group getFriend civilian) <= 0.6;
-
     _nearest = objNull;
     _target = objNull;
 
     {
-      if (side _x != sideLogic) then {
-        if ( side _x == west && _isWestHostile
-          || side _x == east && _isEastHostile
-          || side _x == independent && _isIndependentHostile
-          || side _x == civilian && _isCivilianHostile
-        ) then {
-          _dist = vehicle _x distance _leader;
-          if (_dist < _nearestdist) then {
-              _nearest = _x;
-              _nearestdist = _dist;
-          };
+      if (side _x != sideLogic && side _x != sideEnemy) then {
+        _dist = vehicle _x distance _leader;
+        if (_dist < _nearestdist) then {
+            _nearest = _x;
+            _nearestdist = _dist;
         };
       };
     } forEach allUnits - allDead;
@@ -129,8 +109,11 @@ private _groups = [];
         };
       } forEach units _group;
     } else {
-      {doStop _x; _x doFollow leader _group;} forEach units _group;
+      {
+        doStop _x;
+        _x doFollow leader _group;
+      } forEach units _group;
     };
 
-  }, 5, [_groupZMB, _nearestdist]] call CBA_fnc_addPerFrameHandler;
+  }, 5, [_x , _nearestdist]] call CBA_fnc_addPerFrameHandler;
 } forEach _groups;

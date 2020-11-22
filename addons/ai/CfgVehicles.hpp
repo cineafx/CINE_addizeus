@@ -57,7 +57,7 @@ class CfgVehicles
     class GVAR(moduleZombieAi): Module_F {
         author = "cineafx";
         category = QGVAR(moduleAi);
-        displayName = "Zombie Ai (GREENFOR / independent)";
+        displayName = "Zombie Ai (sideEnemy)";
         //icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
         scope = 1;  //show in editor
         scopeCurator = 2;

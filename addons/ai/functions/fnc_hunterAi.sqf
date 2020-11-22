@@ -66,7 +66,6 @@ private _groups = [];
     {
       _x disableAI "AUTOCOMBAT";
       _x disableAI "SUPPRESSION";
-      _x setSkill ["endurance", 1];
       _x setSkill ["courage", 1];
       _x setSkill ["commanding", 1];
       _x allowFleeing 0;
