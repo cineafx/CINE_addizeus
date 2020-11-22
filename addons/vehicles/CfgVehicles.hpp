@@ -20,7 +20,7 @@ class CfgVehicles
         author = "cineafx";
         category = QGVAR(moduleVehicles);
         displayName = "Clear all vehicles inventories";
-        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa";
         scope = 1;  //show in editor
         scopeCurator = 2;
         isGlobal = 0; //run on server
@@ -40,7 +40,7 @@ class CfgVehicles
         author = "cineafx";
         category = QGVAR(moduleVehicles);
         displayName = "Clear vehicle Inventory (selection)";
-        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa";
         scope = 1;  //show in editor
         scopeCurator = 2;
         isGlobal = 0; //run on server
@@ -60,7 +60,7 @@ class CfgVehicles
         author = "cineafx";
         category = QGVAR(moduleVehicles);
         displayName = "Allow crew in immobile vehicles (toggle)";
-        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa";
         scope = 1;  //show in editor
         scopeCurator = 2;
         isGlobal = 0; //run on server
@@ -80,7 +80,7 @@ class CfgVehicles
         author = "cineafx";
         category = QGVAR(moduleVehicles);
         displayName = "Disable ACE Cookoff";
-        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa";
         scope = 1;  //show in editor
         scopeCurator = 2;
         isGlobal = 0; //run on server

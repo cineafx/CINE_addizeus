@@ -20,7 +20,7 @@ class CfgVehicles
         author = "cineafx";
         category = QGVAR(moduleGear);
         displayName = "Apply saved loadout";
-        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+        icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa";
         scope = 1;  //show in editor
         scopeCurator = 2;
         isGlobal = 0; //run on server
