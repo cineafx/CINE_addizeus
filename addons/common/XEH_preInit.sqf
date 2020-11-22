@@ -10,7 +10,7 @@ ADDON = true;
 
 [
   QGVAR(zeus_camera_height),
-  "EDITBOX",
+  "SLIDER",
   ["Zeus camera height", "Number between 2000 and 40000"],
   ["CINE Additional Zeus","General"],
   [2000, 40000, 2000, 0],

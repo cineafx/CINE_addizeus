@@ -85,6 +85,7 @@ private _groups = [];
       _x setSkill ["courage", 1];
       _x setSkill ["commanding", 1];
       _x allowFleeing 0;
+      _x enableFatigue false;
       vehicle _x allowCrewInImmobile true;
     } foreach units _group;
 
