@@ -6,6 +6,12 @@ ADDON = false;
 
 ADDON = true;
 
+//activateAddons [QGVAR(moduleHunterAiTactical)];
+
+//[{!isNull (getAssignedCuratorLogic player)}, {
+//  (getAssignedCuratorLogic player) addCuratorAddons [QGVAR(moduleHunterAiTactical)];
+//}] call CBA_fnc_waitUntilAndExecute;
+
 /* SETTINGS */
 
 [
