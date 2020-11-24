@@ -22,7 +22,7 @@
  */
 
 params ["_units", "_args"];
-_args params ["_nearestdist", "_aiType"];
+_args params ["_aiType", ["_nearestdist", GVAR(zombieAi_seek_range)]];
 
 private _groups = [];
 {
@@ -59,6 +59,7 @@ private _groups = [];
         _group setSpeedMode "FULL";
         {
           _x disableAI "COVER";
+          _x setUnitPos "UP";
         } foreach units _group;
       };
     };

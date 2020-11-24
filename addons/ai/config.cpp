@@ -30,3 +30,4 @@ class CfgFactionClasses
 };
 
 #include "CfgVehicles.hpp"
+#include "ACE_ZeusActions.hpp"

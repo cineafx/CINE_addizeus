@@ -19,7 +19,7 @@
 
 
 params ["_units", "_args"];
-_args params ["_nearestdist"];
+_args params [["_nearestdist", GVAR(zombieAi_seek_range)]];
 
 private _groups = [];
 {

@@ -17,6 +17,6 @@
  * Public: [No]
  */
 
-[_this, DFUNC(hunterAi), "Hunter Ai enabled", [GVAR(hunterAi_seek_range), "AGGRESSIVE_PUSH"], "Units"] call EFUNC(common,moduleHandler);
+[_this, DFUNC(hunterAi), "Hunter Ai enabled", ["AGGRESSIVE_PUSH", GVAR(hunterAi_seek_range)], "Units"] call EFUNC(common,moduleHandler);
 
 true;
