@@ -18,7 +18,7 @@
  */
 
 
-params ["_units", "_args"];
+params ["_units", ["_args",[]]];
 _args params [["_nearestdist", GVAR(zombieAi_seek_range)]];
 
 private _groups = [];
@@ -40,14 +40,18 @@ private _groups = [];
       _args params ["_unit"];
       _target = (group _unit) getVariable ["target", null];
 
-      if (!isNull _target && animationState _unit != "awoppercmstpsgthwnondnon_end") then {
+      if (!alive _unit) exitWith {
+        [_handle] call CBA_fnc_removePerFrameHandler;
+      };
+
+      if (!isNull _target &&
+          !isNull _unit &&
+          _unit != vehicle _unit &&
+          animationState _unit != "awoppercmstpsgthwnondnon_end") then {
         if (_unit distance getposATL _target < 2.5 && alive _target  && _target != _unit) then {
           _unit switchMove "AwopPercMstpSgthWnonDnon_end";
           [_target, 0.15, selectRandom ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"], selectRandom ["bullet", "grenade", "explosive", "shell", "vehiclecrash", "backblast", "stab", "punch", "falling", "ropeburn", "unkown"]] call ace_medical_fnc_addDamageToUnit;
         };
-      };
-      if (!alive _unit) then {
-        [_handle] call CBA_fnc_removePerFrameHandler;
       };
     }, 0.5, [_x]] call CBA_fnc_addPerFrameHandler;
   } forEach units _x;
