@@ -1,5 +1,11 @@
 # Arma stuff
+@*
+*.zip
 release/*
+releases/*
+hemtt
+hemtt.exe
+tools/temp
 *.cache
 *.pbo
 texHeaders.bin
@@ -7,6 +13,7 @@ texHeaders.bin
 *.swo
 *.biprivatekey
 Thumbs.db
+CHANGELOG.md
 
 
  Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
