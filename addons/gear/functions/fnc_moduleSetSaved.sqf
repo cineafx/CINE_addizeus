@@ -21,7 +21,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE Gear",
-    "Set saved loadout (achilles)",
+    "Set saved loadout",
     {
       createDialog QGVAR(RscSetSaved);
     }
@@ -31,7 +31,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE Gear",
-    "Set saved loadout (zen)",
+    "Set saved loadout",
     {
       createDialog QGVAR(RscSetSaved);
     },

@@ -19,7 +19,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE Gear",
-    "Apply saved loadout (achilles)",
+    "Apply saved loadout",
     {
       params ["_pos", "_attachedObject"];
 
@@ -31,7 +31,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE Gear",
-    "Apply saved loadout (zen)",
+    "Apply saved loadout",
     {
       params ["_pos", "_attachedObject"];
 

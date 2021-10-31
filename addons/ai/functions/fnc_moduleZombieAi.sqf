@@ -19,7 +19,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE AI",
-    "Zombie AI (achilles)",
+    "Zombie AI",
     {
       params ["_pos", "_attachedObject"];
 
@@ -44,7 +44,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE AI",
-    "Zombie AI (zen)",
+    "Zombie AI",
     {
       params ["_pos", "_attachedObject"];
 

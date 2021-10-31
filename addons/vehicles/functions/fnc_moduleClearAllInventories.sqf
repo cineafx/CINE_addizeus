@@ -19,7 +19,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE vehicles",
-    "Clear all vehicles inventories (achilles)",
+    "Clear all vehicles inventories",
     {
       [vehicles] call FUNC(clearInventory);
       [objNull, "Cleared all vehicles inventories"] call bis_fnc_showCuratorFeedbackMessage;
@@ -30,7 +30,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE vehicles",
-    "Clear all vehicles inventories (zen)",
+    "Clear all vehicles inventories",
     {
       [vehicles] call FUNC(clearInventory);
       [objNull, "Cleared all vehicles inventories"] call bis_fnc_showCuratorFeedbackMessage;

@@ -19,7 +19,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE AI",
-    "Hunter AI: Aggressive (achilles)",
+    "Hunter AI: Aggressive",
     {
       params ["_pos", "_attachedObject"];
 
@@ -44,7 +44,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE AI",
-    "Hunter AI: Aggressive (zen)",
+    "Hunter AI: Aggressive",
     {
       params ["_pos", "_attachedObject"];
 

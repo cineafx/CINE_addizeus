@@ -19,7 +19,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE vehicles",
-    "Allow crew in immobile vehicles (toggle) (achilles)",
+    "Allow crew in immobile vehicles (toggle)",
     {
       [] call FUNC(allowCrew);
     }
@@ -29,7 +29,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE vehicles",
-    "Allow crew in immobile vehicles (toggle) (zen)",
+    "Allow crew in immobile vehicles (toggle)",
     {
       [] call FUNC(allowCrew);
     },
