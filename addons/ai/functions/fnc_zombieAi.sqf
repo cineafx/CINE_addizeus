@@ -17,7 +17,6 @@
  * Public: [No]
  */
 
-
 params ["_units", ["_args",[]]];
 _args params [["_nearestdist", GVAR(zombieAi_seek_range)]];
 
@@ -30,7 +29,6 @@ private _groups = [];
 } forEach _units;
 
 {
-
   {
     [_x, "ACE_NoVoice"] remoteExecCall ["setSpeaker", 0, _x];
     _x addRating -10000;
@@ -44,14 +42,25 @@ private _groups = [];
         [_handle] call CBA_fnc_removePerFrameHandler;
       };
 
-      if (!isNull _target &&
+      if (
+          // unit
           !isNull _unit &&
-          _unit != vehicle _unit &&
-          animationState _unit != "awoppercmstpsgthwnondnon_end") then {
-        if (_unit distance getposATL _target < 2.5 && alive _target  && _target != _unit) then {
-          _unit switchMove "AwopPercMstpSgthWnonDnon_end";
-          [_target, 0.15, selectRandom ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"], selectRandom ["bullet", "grenade", "explosive", "shell", "vehiclecrash", "backblast", "stab", "punch", "falling", "ropeburn", "unkown"]] call ace_medical_fnc_addDamageToUnit;
-        };
+          _unit == vehicle _unit &&
+          alive _unit &&
+          !(_unit getVariable ["ACE_isUnconscious",false]) &&
+          animationState _unit != "awoppercmstpsgthwnondnon_end" &&
+
+          // target
+          !isNull _target &&
+          alive _target &&
+          !(_target getVariable ["ACE_isUnconscious",false]) &&
+          _unit distance getposATL _target < 2.5 &&
+
+          // is targeting self?
+          _target != _unit
+      ) then {
+        _unit switchMove "AwopPercMstpSgthWnonDnon_end";
+        [_target, 0.15, selectRandom ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"], selectRandom ["bullet", "grenade", "explosive", "shell", "vehiclecrash", "backblast", "stab", "punch", "falling", "ropeburn", "unkown"]] call ace_medical_fnc_addDamageToUnit;
       };
     }, 0.5, [_x]] call CBA_fnc_addPerFrameHandler;
   } forEach units _x;
