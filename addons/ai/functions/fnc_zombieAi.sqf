@@ -36,7 +36,7 @@ private _groups = [];
     [{
       params["_args","_handle"];
       _args params ["_unit"];
-      _target = (group _unit) getVariable ["target", null];
+      _target = (group _unit) getVariable ["target", objNull];
 
       if (!alive _unit) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
@@ -52,12 +52,11 @@ private _groups = [];
 
           // target
           !isNull _target &&
+          _target != _unit &&
+          //_target == vehicle _target &&
           alive _target &&
           !(_target getVariable ["ACE_isUnconscious",false]) &&
-          _unit distance getposATL _target < 2.5 &&
-
-          // is targeting self?
-          _target != _unit
+          _unit distance getposATL _target < 2.5
       ) then {
         _unit switchMove "AwopPercMstpSgthWnonDnon_end";
         [_target, 0.15, selectRandom ["head", "body", "hand_l", "hand_r", "leg_l", "leg_r"], selectRandom ["bullet", "grenade", "explosive", "shell", "vehiclecrash", "backblast", "stab", "punch", "falling", "ropeburn", "unkown"]] call ace_medical_fnc_addDamageToUnit;
