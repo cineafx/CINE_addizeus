@@ -1,5 +1,10 @@
-PREP(apply_saved);
-PREP(module_apply_saved);
-PREP(module_set_saved);
-PREP(set_saved);
+// Module handlers
+PREP(moduleApplySaved);
+PREP(moduleSetSaved);
+PREP(moduleTest);
+
+// Module code
+PREP(applySaved);
+PREP(prepSaved);
+PREP(setSaved);
 PREP(unitType);

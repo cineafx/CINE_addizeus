@@ -14,3 +14,6 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+#include "ui\RscAttributes.hpp"
+
+//https://github.com/kayler-renslow/arma-dialog-creator

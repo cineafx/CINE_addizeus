@@ -6,16 +6,26 @@ ADDON = false;
 
 ADDON = true;
 
+//activateAddons [QGVAR(moduleHunterAiTactical)];
+
+//[{!isNull (getAssignedCuratorLogic player)}, {
+//  (getAssignedCuratorLogic player) addCuratorAddons [QGVAR(moduleHunterAiTactical)];
+//}] call CBA_fnc_waitUntilAndExecute;
+
 /* SETTINGS */
 
 [
   QGVAR(zeus_camera_height),
-  "EDITBOX",
+  "SLIDER",
   ["Zeus camera height", "Number between 2000 and 40000"],
   ["CINE Additional Zeus","General"],
-  "2000",
+  [2000, 40000, 2000, 0],
   2,
-  {call FUNC(update_zeus_camera_height)}
+  {
+    [{!isNull (getAssignedCuratorLogic player)}, {
+      [(getAssignedCuratorLogic player), GVAR(zeus_camera_height)] remoteExecCall ["setCuratorCameraAreaCeiling", 2, false];
+    }] call CBA_fnc_waitUntilAndExecute;
+  }
 ] call CBA_settings_fnc_init;
 
 [

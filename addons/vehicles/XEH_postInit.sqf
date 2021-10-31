@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-[] call FUNC(allow_crew);
-[] call FUNC(clear_all_inventories);
-[] call FUNC(clear_inventory);
-[] call FUNC(disable_cook_off);
+[] call FUNC(moduleAllowCrew);
+[] call FUNC(moduleClearAllInventories);
+[] call FUNC(moduleClearInventory);
+[] call FUNC(moduleDisableCookOff);

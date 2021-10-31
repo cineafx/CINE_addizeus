@@ -1,9 +1,9 @@
-PREP(HunterAi2_0);
-PREP(HunterAi2_1);
-PREP(HunterAi2_2);
+// Modules handler
+PREP(moduleHunterAiTactical);
+PREP(moduleHunterAiAggressive);
+PREP(moduleZombieAi);
 
-PREP(selectionAction);
-PREP(HunterAi2_3);
-PREP(module_HunterAi2_3);
+// Module code
+PREP(hunterAi);
+PREP(zombieAi);
 
-PREP(ZombieAI1_0);
