@@ -1,22 +1,44 @@
 #include "script_component.hpp"
 /*
  * Author: cineafx
- * Module function to apply the predefine loadouts to units.
+ * Adds apply gear module to the zeus module menu.
+ * Automatically detects Ares Achilles and ZEN.
  *
  * Arguments:
- * 0: The Module Logic <OBJECT>
- * 1: synced objects <ARRAY>
- * 2: Activated <BOOL>
+ * nothing
  *
  * Return Value:
  * nothing
  *
  * Example:
- * [objNull, [], true] call CINE_addizeus_gear_fnc_moduleApplySaved
+ * [] call CINE_addizeus_gear_fnc_moduleApplySaved
  *
  * Public: [No]
  */
 
-[_this, DFUNC(applySaved), "Loadouts applied", [], "Units"] call EFUNC(common,moduleHandler);
+if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
+  [
+    "CINE Gear",
+    "Apply saved loadout (achilles)",
+    {
+      params ["_pos", "_attachedObject"];
+
+      [_attachedObject, DFUNC(applySaved), "Loadouts applied", [], "Units"] call EFUNC(common,moduleHandler);
+    }
+  ] call Ares_fnc_RegisterCustomModule;
+};
+
+if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
+  [
+    "CINE Gear",
+    "Apply saved loadout (zen)",
+    {
+      params ["_pos", "_attachedObject"];
+
+      [_attachedObject, DFUNC(applySaved), "Loadouts applied", [], "Units"] call EFUNC(common,moduleHandler);
+    },
+    "\a3\ui_f\data\igui\cfg\Actions\reammo_ca.paa"
+  ] call zen_custom_modules_fnc_register;
+};
 
 true;

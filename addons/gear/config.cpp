@@ -14,17 +14,6 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-
-class CfgFactionClasses
-{
-    class NO_CATEGORY;
-    class GVAR(moduleGear): NO_CATEGORY
-    {
-        displayName = "CINE Gear";
-    };
-};
-
 #include "ui\RscAttributes.hpp"
-#include "CfgVehicles.hpp"
 
 //https://github.com/kayler-renslow/arma-dialog-creator

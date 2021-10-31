@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: PabstMirror
- * Module Function to make a unit surrender (can be called from editor)
- * Also used for threeden attribute expression with dummy Logic Object
+ * Author: cineafx
  *
  * Arguments:
  * 0: The Module Logic <OBJECT>
@@ -13,7 +11,7 @@
  * None
  *
  * Example:
- * [objNull, [player], true] call ace_captives_fnc_moduleSurrender
+ * [objNull, [player], true] call CINE_addizeus_gear_fnc_moduleTest
  *
  * Public: No
  */

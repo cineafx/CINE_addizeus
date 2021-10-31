@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: cineafx
- * Adds a module to set predefined loadouts to the zeus module menu.
+ * Adds set gear module to the zeus module menu.
+ * Automatically detects Ares Achilles and ZEN.
  * The dialog will take "getUnitLoadout" formatted arrays
  *
  * Arguments:
@@ -16,14 +17,27 @@
  * Public: [No]
  */
 
-params ["_logic", "_units", "_activated"];
 
-TRACE_3("params",_logic,_units,_activated);
+if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
+  [
+    "CINE Gear",
+    "Set saved loadout (achilles)",
+    {
+      createDialog QGVAR(RscSetSaved);
+    }
+  ] call Ares_fnc_RegisterCustomModule;
+};
 
-createDialog QGVAR(RscSetSaved);
-
-if (!isNull _logic) then {
-    deleteVehicle _logic;
+if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
+  [
+    "CINE Gear",
+    "Set saved loadout (zen)",
+    {
+      createDialog QGVAR(RscSetSaved);
+    },
+    //"\a3\ui_f\data\igui\cfg\Actions\gear_ca.paa"
+    "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"
+  ] call zen_custom_modules_fnc_register;
 };
 
 true;
