@@ -14,7 +14,7 @@ ADDON = true;
   "SLIDER",
   ["Hunter Ai seek radius", "Number above 0"],
   ["CINE Additional Zeus","Ai"],
-  [0, 10000, 350, 0],
+  [0, 10000, 400, 0],
   2
 ] call CBA_settings_fnc_init;
 

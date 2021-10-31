@@ -28,7 +28,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
       private _dialogResult = [
         "Set search distance",
         [
-          ["Search distance", "", "750"]
+          ["Search distance", "", "200"]
         ]
       ] call Ares_fnc_showChooseDialog;
       if !(_dialogResult isEqualTo []) then {
