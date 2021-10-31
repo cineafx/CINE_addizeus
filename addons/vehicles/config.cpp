@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {QGVAR(moduleClearAllInventories), QGVAR(moduleClearInventory), QGVAR(moduleAllowCrew), QGVAR(moduleDisableCookoff)};
+        units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cine_addizeus_main"};
@@ -14,14 +14,3 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-
-class CfgFactionClasses
-{
-    class NO_CATEGORY;
-    class GVAR(moduleVehicles): NO_CATEGORY
-    {
-        displayName = "CINE Vehicles";
-    };
-};
-
-#include "CfgVehicles.hpp"

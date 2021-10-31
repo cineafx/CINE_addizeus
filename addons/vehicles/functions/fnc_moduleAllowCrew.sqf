@@ -2,6 +2,7 @@
 /*
  * Author: cineafx
  * Adds a zeus module which forces AI to stay in immobile vehicles.
+ * Automatically detects Ares Achilles and ZEN.
  *
  * Arguments:
  * none
@@ -10,30 +11,30 @@
  * nothing
  *
  * Example:
- * [] call CINE_addizeus_vehicles_fnc_allowCrew
+ * [] call CINE_addizeus_vehicles_fnc_modulellowCrew
  *
  * Public: [No]
  */
 
-params ["_logic", "_units", "_activated"];
-
-TRACE_3("params",_logic,_units,_activated);
-
-if (isNil QGVAR(allowCrew_EH)) then {
-  GVAR(allowCrew_EH) = [{
+if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
+  [
+    "CINE vehicles",
+    "Allow crew in immobile vehicles (toggle) (achilles)",
     {
-        _x allowCrewInImmobile true;
-    } forEach vehicles;
-  }, 15, []] call CBA_fnc_addPerFrameHandler;
-  [objNull, "Enabled: Allow crew in immobile vehicles"] call bis_fnc_showCuratorFeedbackMessage;
-} else {
-  [GVAR(allowCrew_EH)] call CBA_fnc_removePerFrameHandler;
-  GVAR(allowCrew_EH) = nil;
-  [objNull, "Disabled: Allow crew in immobile vehicles"] call bis_fnc_showCuratorFeedbackMessage;
+      [] call FUNC(allowCrew);
+    }
+  ] call Ares_fnc_RegisterCustomModule;
 };
 
-if (!isNull _logic) then {
-    deleteVehicle _logic;
+if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
+  [
+    "CINE vehicles",
+    "Allow crew in immobile vehicles (toggle) (zen)",
+    {
+      [] call FUNC(allowCrew);
+    },
+    "\a3\ui_f\data\igui\cfg\Actions\getout_ca.paa"
+  ] call zen_custom_modules_fnc_register;
 };
 
 true;

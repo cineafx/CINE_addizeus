@@ -2,12 +2,11 @@
 /*
  * Author: cineafx
  * Zeus module handler for disabling ACE cookoff missione wide.
+ * Automatically detects Ares Achilles and ZEN.
  * !!! Currently there is no way to turn it back on through a module !!!
  *
  * Arguments:
- * 0: Module logic. <Logic> (default: null)
- * 1: Attached units. <Array> (default: null)
- * 2: Activated. <Boolean> (default: null)
+ * nothing
  *
  * Return Value:
  * nothing
@@ -17,16 +16,30 @@
  *
  * Public: [No]
  */
-params ["_logic", "_units", "_activated"];
 
-TRACE_3("params",_logic,_units,_activated);
+if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
+  [
+    "CINE vehicles",
+    "Disable ACE cookoff (achilles)",
+    {
+      missionNamespace setVariable ["ace_cookoff_enable",false];
+      missionNamespace setVariable ["ace_cookoff_enableAmmoCookoff",false];
+      [objNull, "Disabled ACE Cookoff."] call bis_fnc_showCuratorFeedbackMessage;
+    }
+  ] call Ares_fnc_RegisterCustomModule;
+};
 
-missionNamespace setVariable ["ace_cookoff_enable",false];
-missionNamespace setVariable ["ace_cookoff_enableAmmoCookoff",false];
-[objNull, "Disabled ACE Cookoff."] call bis_fnc_showCuratorFeedbackMessage;
-
-if (!isNull _logic) then {
-    deleteVehicle _logic;
+if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
+  [
+    "CINE vehicles",
+    "Disable ACE cookoff (achilles)",
+    {
+      missionNamespace setVariable ["ace_cookoff_enable",false];
+      missionNamespace setVariable ["ace_cookoff_enableAmmoCookoff",false];
+      [objNull, "Disabled ACE Cookoff."] call bis_fnc_showCuratorFeedbackMessage;
+    },
+    "\a3\ui_f\data\igui\cfg\Actions\Obsolete\ui_action_fire_put_down_ca.paa"
+  ] call zen_custom_modules_fnc_register;
 };
 
 true;

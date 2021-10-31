@@ -2,30 +2,41 @@
 /*
  * Author: cineafx
  * Zeus module handler for clearing of all vehicles inventories at once.
+ * Automatically detects Ares Achilles and ZEN.
  *
  * Arguments:
- * 0: Module logic. <Logic> (default: null)
- * 1: Attached units. <Array> (default: null)
- * 2: Activated. <Boolean> (default: null)
+ * nothing
  *
  * Return Value:
  * nothing
  *
  * Example:
- * [] call CINE_addizeus_vehicles_fnc_clear_all_inventories
+ * [] call CINE_addizeus_vehicles_fnc_moduleClearAllInventories
  *
  * Public: [No]
  */
 
-params ["_logic", "_units", "_activated"];
+if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
+  [
+    "CINE vehicles",
+    "Clear all vehicles inventories (achilles)",
+    {
+      [vehicles] call FUNC(clearInventory);
+      [objNull, "Cleared all vehicles inventories"] call bis_fnc_showCuratorFeedbackMessage;
+    }
+  ] call Ares_fnc_RegisterCustomModule;
+};
 
-TRACE_3("params",_logic,_units,_activated);
-
-[vehicles] call FUNC(clearInventory);
-[objNull, "Cleared all vehicles inventories"] call bis_fnc_showCuratorFeedbackMessage;
-
-if (!isNull _logic) then {
-    deleteVehicle _logic;
+if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
+  [
+    "CINE vehicles",
+    "Clear all vehicles inventories (zen)",
+    {
+      [vehicles] call FUNC(clearInventory);
+      [objNull, "Cleared all vehicles inventories"] call bis_fnc_showCuratorFeedbackMessage;
+    },
+    "\a3\ui_f\data\igui\cfg\Actions\unloadAllVehicles_ca.paa"
+  ] call zen_custom_modules_fnc_register;
 };
 
 true;
