@@ -1,21 +1,57 @@
 #include "script_component.hpp"
 /*
  * Author: cineafx
+ * Adds the Zombie Ai 1.0 to the zeus module menu.
+ * Automatically detects Ares Achilles and ZEN.
  *
  * Arguments:
- * 0: The Module Logic <OBJECT>
- * 1: synced objects <ARRAY>
- * 2: Activated <BOOL>
+ * nothing
  *
  * Return Value:
  * nothing
  *
  * Example:
- * [objNull, [], true] call CINE_addizeus_gear_fnc_moduleZombieAi
+ * [] call CINE_addizeus_gear_fnc_moduleZombieAi
  *
  * Public: [No]
  */
 
-[_this, DFUNC(zombieAi), "Zombie Ai enabled", [GVAR(zombieAi_seek_range)], "Units"] call EFUNC(common,moduleHandler);
+if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
+  [
+    "CINE AI",
+    "Zombie AI (achilles)",
+    {
+      params ["_pos", "_attachedObject"];
+
+      _seekRange = GVAR(zombieAi_seek_range);
+
+      private _dialogResult = [
+        "Set search distance",
+        [
+          ["Search distance", "", "750"]
+        ]
+      ] call Ares_fnc_showChooseDialog;
+      if !(_dialogResult isEqualTo []) then {
+        _dialogResult params ["_nearestdist"];
+        _seekRange = parseNumber _nearestdist;
+      };
+
+      [_attachedObject, DFUNC(zombieAi), "Zombie Ai enabled", [GVAR(zombieAi_seek_range)], "Units"] call EFUNC(common,moduleHandler);
+    }
+  ] call Ares_fnc_RegisterCustomModule;
+};
+
+if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
+  [
+    "CINE AI",
+    "Zombie AI (zen)",
+    {
+      params ["_pos", "_attachedObject"];
+
+      [_attachedObject, DFUNC(zombieAi), "Zombie Ai enabled", [GVAR(zombieAi_seek_range)], "Units"] call EFUNC(common,moduleHandler);
+    },
+    "\a3\ui_f\data\gui\cfg\hints\ActionMenu_ca.paa"
+  ] call zen_custom_modules_fnc_register;
+};
 
 true;

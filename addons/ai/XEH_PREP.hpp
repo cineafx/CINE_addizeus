@@ -1,6 +1,3 @@
-// Helpers
-PREP(selectionAction);
-
 // Modules handler
 PREP(moduleHunterAiTactical);
 PREP(moduleHunterAiAggressive);

@@ -19,15 +19,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-
-class CfgFactionClasses
-{
-    class NO_CATEGORY;
-    class GVAR(moduleAi): NO_CATEGORY
-    {
-        displayName = "CINE Ai";
-    };
-};
-
-#include "CfgVehicles.hpp"
 #include "ACE_ZeusActions.hpp"
