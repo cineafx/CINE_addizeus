@@ -4,3 +4,4 @@
 [] call FUNC(moduleClearAllInventories);
 [] call FUNC(moduleClearInventory);
 [] call FUNC(moduleDisableCookOff);
+[] call FUNC(moduleImmobiliseVehicle);
