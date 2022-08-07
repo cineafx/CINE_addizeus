@@ -20,7 +20,7 @@
 if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then {
   [
     "CINE vehicles",
-    "Disable ACE cookoff",
+    "Globally disable ACE cookoff",
     {
       missionNamespace setVariable ["ace_cookoff_enable",false];
       missionNamespace setVariable ["ace_cookoff_enableAmmoCookoff",false];
@@ -32,7 +32,7 @@ if (isClass (configFile >> 'cfgPatches' >> "achilles_modules_f_achilles")) then 
 if (isClass (configFile >> 'cfgPatches' >> "zen_modules")) then {
   [
     "CINE vehicles",
-    "Disable ACE cookoff",
+    "Globally disable ACE cookoff",
     {
       missionNamespace setVariable ["ace_cookoff_enable",false];
       missionNamespace setVariable ["ace_cookoff_enableAmmoCookoff",false];
