@@ -37,7 +37,12 @@ TRACE_5("loadout", _gearDefault, _gearLeader, _gearAT, _gearAA, _gearAR);
   _loadoutString = _loadouts select ([typeOf _x] call FUNC(unitType));
   //remove spaces from the _loadoutString so parseSimpleArray doesn't fail
   _loadoutString = _loadoutString splitString " " joinString "";
-  _x setUnitLoadout (parseSimpleArray _loadoutString);
+  _loadoutBeginning = _loadoutString select [0, 3];
+  if (_loadoutBeginning == "[[[") then {
+    _x setUnitLoadout ((parseSimpleArray _loadoutString) # 0);
+  } else {
+    _x setUnitLoadout (parseSimpleArray _loadoutString);
+  }
 } forEach _units;
 
 true;
