@@ -29,6 +29,30 @@ class ACE_ZeusActions {
         statement = "[((curatorSelected select 0) select 0)] call BIS_fnc_neutralizeUnit;";
         icon = "\a3\ui_f\data\gui\Cfg\Debriefing\endDeath_ca.paa";
       };
+      class zeus_InflictDamage_light_few {
+        displayName = "Inflict Damage (light, few)";
+        condition = "true";
+        statement = QUOTE([ARR_3((curatorSelected select 0), 0.05, 5)] call FUNC(InflictDamage));
+        icon = "";
+      };
+      class zeus_InflictDamage_heavy_few {
+        displayName = "Inflict Damage (heavy, few)";
+        condition = "true";
+        statement = QUOTE([ARR_3((curatorSelected select 0), 0.95, 5)] call FUNC(InflictDamage));
+        icon = "";
+      };
+      class zeus_InflictDamage_light_many {
+        displayName = "Inflict Damage (light, many)";
+        condition = "true";
+        statement = QUOTE([ARR_3((curatorSelected select 0), 0.05, 50)] call FUNC(InflictDamage));
+        icon = "";
+      };
+      class zeus_InflictDamage_heavy_many {
+        displayName = "Inflict Damage (heavy, many)";
+        condition = "true";
+        statement = QUOTE([ARR_3((curatorSelected select 0), 0.95, 50)] call FUNC(InflictDamage));
+        icon = "";
+      };
       class zeus_CookOff {
         displayName = "Cook Off";
         condition = "true && if (count (curatorSelected select 0) > 0) then {(((curatorSelected select 0) select 0) isKindOf 'AllVehicles') && !(((curatorSelected select 0) select 0) isKindOf 'Man');} else {false;}";
@@ -110,7 +134,7 @@ class ACE_ZeusActions {
       class zeus_rating_reset {
         displayName = "Rating reset";
         condition = "true";
-        statement = "{_x addRating -(rating player);} forEach (curatorSelected select 0);";
+        statement = "{_x addRating -(rating _x);} forEach (curatorSelected select 0);";
         icon = "\a3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_unchecked_ca.paa";
       };
     };
