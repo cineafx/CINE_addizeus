@@ -26,3 +26,21 @@ ADDON = true;
   [0, 10000, 200, 0],
   2
 ] call CBA_settings_fnc_init;
+
+[
+  QGVAR(unarmedBecomesCaptive_requiredTime),
+  "SLIDER",
+  ["Unarmed becomes captive time", "Number above 0"],
+  ["CINE Additional Zeus","Ai"],
+  [0, 300, 60, 0],
+  2
+] call CBA_settings_fnc_init;
+
+[
+  QGVAR(unarmedBecomesCaptive_target),
+  "LIST",
+  "Unarmed unit type",
+  ["CINE Additional Zeus","Ai"],
+  [[0,1,2], ["All units", "Only players", "Only Ai"], 1],
+  2
+] call CBA_settings_fnc_init;

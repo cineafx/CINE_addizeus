@@ -8,4 +8,5 @@
 [] call FUNC(moduleHunterAiAggressive);
 [] call FUNC(moduleHunterAiTactical);
 [] call FUNC(moduleZombieAi);
+[] call FUNC(moduleUnarmedBecomesCaptive);
 
