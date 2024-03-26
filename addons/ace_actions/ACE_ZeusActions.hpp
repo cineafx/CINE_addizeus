@@ -9,7 +9,7 @@ class ACE_ZeusActions {
     class zeus_Arsenal {
       displayName = "Arsenal";
       condition = "true && if (count (curatorSelected select 0) > 0) then {(((curatorSelected select 0) select 0) isKindOf 'Man');} else {false;}";
-      statement = "_box = createVehicle ['Land_HelipadEmpty_F', getPos _player, [], 0, 'CAN_COLLIDE']; [_box,true,false] call ace_arsenal_fnc_initbox; [{[_this select 0, _this select 1] call ace_arsenal_fnc_openbox; deleteVehicle (_this select 0); [(_this select 0), true] call ace_arsenal_fnc_removeBox;}, [_box, ((curatorSelected select 0) select 0)]] call CBA_fnc_execNextFrame;";
+      statement = "[curatorSelected # 0 # 0, curatorSelected # 0 # 0, true] call ace_arsenal_fnc_openBox";
       icon = "\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa";
     };
     class zeus_pylons {
@@ -119,6 +119,13 @@ class ACE_ZeusActions {
         statement = "{_x setVehicleLock 'LOCKEDPLAYER';} forEach (curatorSelected select 0);";
         icon = "";
       };
+    };
+    class zeus_vehicle_sensorList {
+      displayName = "Vehicle sensors";
+      condition = "true && if (count (curatorSelected select 0) > 0) then {(((curatorSelected select 0) select 0) isKindOf 'Air') && !(((curatorSelected select 0) select 0) isKindOf 'Man');} else {false;}";
+      statement = "true;";
+      icon = "\a3\ui_f\data\IGUI\Cfg\Actions\RadarOn_ca.paa";
+      insertChildren = QUOTE(call FUNC(insertVehicleSensorList));
     };
     class zeus_rating {
       displayName = "Rating";

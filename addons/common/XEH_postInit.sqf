@@ -4,4 +4,4 @@
 [{call FUNC(set_zeus_radios)},[], 30] call CBA_fnc_waitAndExecute;
 [{call FUNC(set_zeus_radios)}, 60] call CBA_fnc_addPerFrameHandler;
 
-GVAR(selectedUnits) = []
+GVAR(selectedUnits) = [];
