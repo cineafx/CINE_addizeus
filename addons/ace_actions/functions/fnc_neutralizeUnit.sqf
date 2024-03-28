@@ -28,7 +28,15 @@ private _vehicles = [];
 } forEach _units;
 
 {
-  _x call BIS_fnc_neutralizeUnit;
-} forEach _unitsOnFoot + _vehicles;
+  [{
+    _this call BIS_fnc_neutralizeUnit;
+  }, _x, random 1] call CBA_fnc_waitAndExecute;
+} forEach _vehicles;
+
+{
+  [{
+    _this call BIS_fnc_neutralizeUnit;
+  }, _x, random 3] call CBA_fnc_waitAndExecute;
+} forEach _unitsOnFoot;
 
 true
