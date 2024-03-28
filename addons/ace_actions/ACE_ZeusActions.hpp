@@ -26,7 +26,7 @@ class ACE_ZeusActions {
       class zeus_Neutralize {
         displayName = "Neutralize";
         condition = "true";
-        statement = "[((curatorSelected select 0) select 0)] call BIS_fnc_neutralizeUnit;";
+        statement = QUOTE([(curatorSelected select 0)] call FUNC(neutralizeUnit));
         icon = "\a3\ui_f\data\gui\Cfg\Debriefing\endDeath_ca.paa";
       };
       class zeus_InflictDamage_light_few {
