@@ -68,25 +68,25 @@ class ACE_ZeusActions {
       class zeus_VCOM_enable {
         displayName = "Enable VCOM";
         condition = "true";
-        statement = "{_x setvariable ['VCOM_NOAI',false];} forEach (curatorSelected select 0);";
+        statement = "{_x setvariable ['VCOM_NOAI',false,true];} forEach (curatorSelected select 0);";
         icon = "\a3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_checked_ca.paa";
       };
       class zeus_VCOM_disable {
         displayName = "Disable VCOM";
         condition = "true";
-        statement = "{_x setvariable ['VCOM_NOAI',true];} forEach (curatorSelected select 0);";
+        statement = "{_x setvariable ['VCOM_NOAI',true,true];} forEach (curatorSelected select 0);";
         icon = "\a3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_unchecked_ca.paa";
       };
       class zeus_VCOM_enable_wp {
         displayName = "Enable VCOM creating waypoints";
         condition = "true";
-        statement = "{_x setvariable ['VCOM_NOPATHING_Unit',false];} forEach (curatorSelected select 0);";
+        statement = "{_x setvariable ['VCOM_NOPATHING_Unit',false,true];} forEach (curatorSelected select 0);";
         icon = "\a3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_checked_ca.paa";
       };
       class zeus_VCOM_disable_wp {
         displayName = "Disable VCOM creating waypoints";
         condition = "true";
-        statement = "{_x setvariable ['VCOM_NOPATHING_Unit',true];} forEach (curatorSelected select 0);";
+        statement = "{_x setvariable ['VCOM_NOPATHING_Unit',true,true];} forEach (curatorSelected select 0);";
         icon = "\a3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_unchecked_ca.paa";
       };
     };
