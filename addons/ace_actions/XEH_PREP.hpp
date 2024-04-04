@@ -3,3 +3,5 @@
 PREP(InflictDamage);
 PREP(insertVehicleSensorList);
 PREP(neutralizeUnit);
+PREP(convertToPhoneIed);
+

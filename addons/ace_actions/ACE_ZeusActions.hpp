@@ -1,4 +1,10 @@
 class ACE_ZeusActions {
+  class zeus_cellphone {
+      displayName = "Cellphone";
+      condition = "true";
+      statement = "closeDialog 0; createDialog 'Rsc_ACE_PhoneInterface';";
+      icon = "\z\ace\addons\explosives\Data\UI\Cellphone_UI.paa";
+  };
   class ZeusUnits {
     class zeus_Gear {
       displayName = "Gear";
@@ -28,6 +34,12 @@ class ACE_ZeusActions {
         condition = "true";
         statement = QUOTE([(curatorSelected select 0)] call FUNC(neutralizeUnit));
         icon = "\a3\ui_f\data\gui\Cfg\Debriefing\endDeath_ca.paa";
+      };
+      class zeus_convertToPhoneIed {
+        displayName = "Convert to phone IED";
+        condition = "true";
+        statement = QUOTE([(curatorSelected select 0) select 0] call FUNC(convertToPhoneIed));
+        icon = "\z\ace\addons\explosives\Data\UI\Cellphone_UI.paa";
       };
       class zeus_InflictDamage_light_few {
         displayName = "Inflict Damage (light, few)";
