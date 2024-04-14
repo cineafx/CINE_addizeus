@@ -14,7 +14,7 @@ Some modules have the option to select objects to which the effect(s) will apply
       ";
       displayName = "Selection Option";
       image = "";
-      noImage = true;
+      noImage = "true";
       tip = "You can read the message given at the top of the screen about what the module wants you to select.";
       dlc = -1;
     };

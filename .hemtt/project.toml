@@ -1,0 +1,12 @@
+name = "cine_addizeus"
+prefix = "cine_addizeus"
+author = "cineafx"
+mainprefix = "z"
+[files]
+include = [
+  "mod.cpp",
+  "README.md",
+  "AUTHORS.txt",
+  "LICENSE",
+  "logo_cine_addizeus_ca.paa"
+]

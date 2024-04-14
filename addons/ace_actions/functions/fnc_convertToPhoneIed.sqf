@@ -6,6 +6,8 @@ private _mag = getText (configFile >> "CfgAmmo" >> _ammo >> "ace_explosives_maga
 private _triggerTypes = [_mag] call ace_explosives_fnc_triggerType;
 private _magTriggers = configFile >> "CfgMagazines" >> _mag >> "ACE_Triggers";
 
+private _converted = false;
+
 {
   private _text = "";
   if(isText(_magTriggers >> configName _x >> "displayName")) then {
@@ -20,10 +22,10 @@ private _magTriggers = configFile >> "CfgMagazines" >> _mag >> "ACE_Triggers";
     private _lastAddedCode = (ace_explosives_CellphoneIEDs select _lastIndex) select 1;
     [format ["IED %1", _lastIndex + 1], _lastAddedCode] call ace_explosives_fnc_addToSpeedDial;
 
-    true;
+    _converted = true;
   };
 } forEach _triggerTypes;
 
-[objNull, format ["%1 does not support the 'Cellphone' trigger", _mag]] call bis_fnc_showCuratorFeedbackMessage;
-
-false;
+if (!_converted) then {
+  [objNull, format ["%1 does not support the 'Cellphone' trigger", _mag]] call bis_fnc_showCuratorFeedbackMessage;
+}

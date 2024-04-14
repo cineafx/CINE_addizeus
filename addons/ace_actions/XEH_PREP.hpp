@@ -5,3 +5,5 @@ PREP(insertVehicleSensorList);
 PREP(neutralizeUnit);
 PREP(convertToPhoneIed);
 
+PREP(showFullPylonsDialog);
+

@@ -124,6 +124,6 @@ private _handler_id = _display displayAddEventHandler ["KeyDown",
       GVAR(selectedUnits) = [];
     };
   };
-  TRACE_1("Selected units", GVAR(selectedUnits))
+  TRACE_1("Selected units",GVAR(selectedUnits))
 
 }, [_display, _handler_id, _type]] call CBA_fnc_waitUntilAndExecute;
