@@ -25,7 +25,7 @@ class GVAR(dangerZone) {
   class GVAR(dangerZone_InflictDamage_heavy_few) {
     displayName = "Inflict Damage (heavy, few)";
     condition = "true";
-    statement = QUOTE([ARR_3((curatorSelected select 0),0.95,5)] call FUNC(InflictDamage));
+    statement = QUOTE([ARR_3((curatorSelected select 0),2,5)] call FUNC(InflictDamage));
     icon = "";
   };
   class GVAR(dangerZone_InflictDamage_light_many) {
@@ -37,7 +37,7 @@ class GVAR(dangerZone) {
   class GVAR(dangerZone_InflictDamage_heavy_many) {
     displayName = "Inflict Damage (heavy, many)";
     condition = "true";
-    statement = QUOTE([ARR_3((curatorSelected select 0),0.95,50)] call FUNC(InflictDamage));
+    statement = QUOTE([ARR_3((curatorSelected select 0),2,50)] call FUNC(InflictDamage));
     icon = "";
   };
   class GVAR(dangerZone_CookOff) {
